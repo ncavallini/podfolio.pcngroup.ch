@@ -6,7 +6,7 @@
   <title>PodFolio | Podcasts, without the ads</title>
   <meta
     name="description"
-    content="PodFolio is an ad-free podcast app with offline playback, cloud sync, and a clean bilingual landing page in English and Italian."
+    content="PodFolio is an ad-free podcast app with offline playback, cloud sync, and a one-time Premium unlock, now available on Google Play."
   >
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="shortcut icon" href="favicon.svg">
@@ -363,6 +363,18 @@
       box-shadow: 0 16px 36px rgba(0, 120, 215, 0.24);
     }
 
+    .store-button {
+      gap: 10px;
+      background: linear-gradient(180deg, #191c1d, #0f1112);
+      box-shadow: 0 16px 36px rgba(25, 28, 29, 0.18);
+    }
+
+    .store-button::before {
+      content: "\25B6";
+      font-size: 0.78rem;
+      line-height: 1;
+    }
+
     .button:hover,
     .button:focus-visible {
       transform: translateY(-1px);
@@ -373,6 +385,10 @@
       color: var(--primary-deep);
       border-color: rgba(36, 78, 138, 0.14);
       background: rgba(255, 255, 255, 0.72);
+    }
+
+    .topnav-download {
+      padding: 0 18px;
     }
 
     .hero-notes {
@@ -1267,6 +1283,10 @@
         justify-content: space-between;
       }
 
+      .topnav-download {
+        width: 100%;
+      }
+
       .hero {
         padding-top: 30px;
       }
@@ -1377,6 +1397,13 @@
           <a class="nav-link" href="#features" data-i18n="nav_features">Features</a>
           <a class="nav-link" href="#screenshots" data-i18n="nav_screens">Screenshots</a>
           <a class="nav-link" href="#premium" data-i18n="nav_premium">Premium</a>
+          <a
+            class="button store-button topnav-download"
+            href="https://play.google.com/store/apps/details?id=ch.pcngroup.podfolio"
+            target="_blank"
+            rel="noreferrer"
+            data-i18n="nav_download_cta"
+          >Download</a>
           <div class="lang-switch" role="group" aria-label="Language switcher">
             <button class="lang-pill is-active" type="button" data-lang="en" aria-pressed="true">EN</button>
             <button class="lang-pill" type="button" data-lang="it" aria-pressed="false">IT</button>
@@ -1391,15 +1418,15 @@
           <div class="hero-copy">
             <div class="eyebrow" data-i18n="hero_eyebrow">Offline playback. Cloud sync. No clutter.</div>
             <div class="launch-banner" aria-label="Launch status">
-              <span class="launch-pill" data-i18n="launch_pill">Coming soon</span>
-              <span class="launch-copy" data-i18n="launch_copy">PodFolio is getting ready to launch with a one-time Premium unlock.</span>
+              <span class="launch-pill" data-i18n="launch_pill">Now live</span>
+              <span class="launch-copy" data-i18n="launch_copy">PodFolio is now available on Google Play with a 14-day trial and one-time Premium unlock.</span>
             </div>
             <h1 data-i18n="hero_title">A calmer way to keep up with every podcast.</h1>
-            <p data-i18n="hero_body">PodFolio keeps your library, discovery, downloads, and playback controls organised in one calm, clear place. No ads, no clutter — just a focused podcast app for everyday listening.</p>
+            <p data-i18n="hero_body">PodFolio keeps your library, discovery, downloads, and playback controls organised in one calm, clear place. No ads, no clutter — just a focused podcast app for everyday listening, now ready to download on Android.</p>
 
             <div class="cta-row">
-              <a class="button" href="#screenshots" data-i18n="hero_cta_primary">Explore the app</a>
-              <a class="ghost-button" href="#premium" data-i18n="hero_cta_secondary">View Premium details</a>
+              <a class="button store-button" href="https://play.google.com/store/apps/details?id=ch.pcngroup.podfolio" target="_blank" rel="noreferrer" data-i18n="hero_cta_primary">Download on Google Play</a>
+              <a class="ghost-button" href="#screenshots" data-i18n="hero_cta_secondary">Explore the app</a>
             </div>
 
             <div class="hero-notes" aria-label="Highlights">
@@ -1823,13 +1850,14 @@
             "nav_features": "Features",
             "nav_screens": "Screenshots",
             "nav_premium": "Premium",
+            "nav_download_cta": "Download",
             "hero_eyebrow": "Offline playback. Cloud sync. No clutter.",
-            "launch_pill": "Coming soon",
-            "launch_copy": "PodFolio is getting ready to launch with a one-time Premium unlock.",
+            "launch_pill": "Now live",
+            "launch_copy": "PodFolio is now available on Google Play with a 14-day trial and one-time Premium unlock.",
             "hero_title": "A calmer way to keep up with every podcast.",
             "hero_body": "PodFolio keeps your library, discovery, downloads, and playback controls organised in one calm, clear place. No ads, no clutter — just a focused podcast app for everyday listening.",
-            "hero_cta_primary": "Explore the app",
-            "hero_cta_secondary": "View Premium details",
+            "hero_cta_primary": "Download on Google Play",
+            "hero_cta_secondary": "Explore the app",
             "note_one": "One purchase. No subscription.",
             "note_two": "Offline downloads",
             "note_three": "Google account sync",
@@ -1998,6 +2026,14 @@
             "footer_link_three": "Leggi l’informativa privacy"
       }
 };
+
+    copy.en.hero_body = "PodFolio keeps your library, discovery, downloads, and playback controls organised in one calm, clear place. No ads, no clutter \u2014 just a focused podcast app for everyday listening, now ready to download on Android.";
+    copy.it.nav_download_cta = "Scarica";
+    copy.it.launch_pill = "Ora disponibile";
+    copy.it.launch_copy = "PodFolio \u00e8 ora disponibile su Google Play con 14 giorni di prova e sblocco Premium una tantum.";
+    copy.it.hero_body = "PodFolio organizza libreria, scoperta, download e controlli di ascolto in uno spazio chiaro e ordinato. Niente pubblicit\u00e0, niente distrazioni: solo un\u2019app podcast pensata per l\u2019ascolto quotidiano, ora pronta da scaricare su Android.";
+    copy.it.hero_cta_primary = "Scarica da Google Play";
+    copy.it.hero_cta_secondary = "Esplora l\u2019app";
 
     const i18nNodes = document.querySelectorAll("[data-i18n]");
     const i18nHtmlNodes = document.querySelectorAll("[data-i18n-html]");
