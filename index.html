@@ -14,7 +14,7 @@
   <meta property="og:title" content="PodFolio, podcasts without ads or a subscription">
   <meta property="og:description" content="Ad-free podcast player for Android and the browser. 14-day trial, then CHF 3.99 once.">
   <meta property="og:url" content="https://podfolio.pcngroup.ch/">
-  <meta property="og:image" content="https://podfolio-10b3f.web.app/icons/Icon-512.png">
+  <meta property="og:image" content="https://app.podfolio.pcngroup.ch/icons/Icon-512.png">
   <meta name="theme-color" content="#0078d7">
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="preload" href="fonts/open-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
@@ -420,6 +420,10 @@
     .notif { margin: 10px 12px 0; padding: 12px 14px; border-radius: 16px; background: #ffffff; border: 1px solid #d7dde5; font-size: 13px; }
     .notif b { display: block; font-size: 14px; }
 
+    /* Real screenshots of the web app */
+    .shot { --fold: 34px; position: relative; width: 340px; max-width: 100%; margin: 0; background: #f7f9fc; overflow: hidden; }
+    .shot img { width: 100%; height: auto; }
+
     /* ---------- What's new: one statement ---------- */
     .new { background: var(--mist); padding-block: var(--section); }
     .new h2, .section-title {
@@ -518,12 +522,13 @@
       transition: background-color 400ms ease;
     }
     .stage__screens { position: absolute; left: 0; right: 0; bottom: 9%; display: grid; justify-items: center; align-items: end; }
-    .stage__screens > .screen {
+    .stage__screens > .shot img { height: 100%; object-fit: cover; object-position: top; }
+    .stage__screens > .shot {
       grid-area: 1 / 1;
       height: min(70svh, 640px);
       transition: opacity 300ms ease, transform 420ms var(--ease-out);
     }
-    .stage__screens > .screen[hidden] { display: block; opacity: 0; transform: translateY(16px); visibility: hidden; }
+    .stage__screens > .shot[hidden] { display: block; opacity: 0; transform: translateY(16px); visibility: hidden; }
     .fact { align-self: end; padding-bottom: 7%; font-size: var(--t-body); line-height: 1.5; }
     .fact p[hidden] { display: none; }
 
@@ -549,7 +554,8 @@
       background: var(--tc);
       padding-top: clamp(20px, 2.4vw, 36px);
     }
-    .tile .screen { width: min(300px, 82%); height: 600px; flex: none; }
+    .tile .screen, .tile .shot { width: min(300px, 82%); flex: none; }
+    .tile .screen { height: 600px; }
     .tile--1 { --tc: var(--mist); grid-column: 1 / 4; grid-row: 2; height: 30svh; min-height: 240px; }
     .tile--2 { --tc: var(--paper); grid-column: 4 / 8; grid-row: 2; height: 44svh; min-height: 340px; }
     .tile--3 { --tc: var(--blue); grid-column: 8 / 13; grid-row: 1 / 3; height: 60svh; min-height: 460px; }
@@ -817,7 +823,7 @@
       .front__actions .btn { width: 100%; }
       .front h2 { padding-right: 48px; }
       .finder .btn { padding: 0 18px; }
-      .front__picture .screen { width: 100%; }
+      .front__picture .shot { width: 100%; }
 
       .statement { font-size: 24px; line-height: 1.38; }
       .slot { padding: 0 .3em; }
@@ -826,13 +832,13 @@
       .new__more > div { grid-column: 1 / -1; }
 
       .inside__grid { display: flex; flex-direction: column; align-items: stretch; min-height: 0; gap: 24px; }
-      .stage { order: 1; height: auto; padding-top: 24px; margin-top: 0; }
-      .stage__screens { position: relative; bottom: auto; }
+      .stage { order: 1; height: auto; padding-top: 24px; margin-top: 0; align-self: stretch; }
+      .index, .fact { align-self: stretch; }
+      .stage__screens { position: relative; bottom: auto; width: 100%; }
       .stage__sheet { inset: 0 0 0 0; }
-      .stage__screens > .screen { width: 82%; height: 128vw; max-height: 560px; margin-bottom: 24px; }
+      .stage__screens > .shot { width: 82%; height: 128vw; max-height: 560px; margin-bottom: 24px; }
       .index { order: 0; }
-      .index ul { order: 2; display: flex; gap: 24px; overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 6px; margin-inline: calc(-1 * var(--margin)); padding-inline: var(--margin); scrollbar-width: none; }
-      .index li { flex: none; scroll-snap-align: start; }
+      .index ul { display: flex; flex-wrap: wrap; gap: 4px 24px; }
       .index button { font-size: var(--t-statement); white-space: nowrap; }
       .fact { order: 3; }
 
@@ -882,7 +888,7 @@
         </svg>
         <span>PodFolio</span>
       </a>
-      <a class="topbar__link" href="https://podfolio-10b3f.web.app"><span data-i18n="cta_webapp">Open the web app</span></a>
+      <a class="topbar__link" href="https://app.podfolio.pcngroup.ch"><span data-i18n="cta_webapp">Open the web app</span></a>
     </header>
 
     <main id="top">
@@ -918,32 +924,11 @@
 
           <div class="front__side">
             <div class="front__actions">
-              <a class="btn" href="https://podfolio-10b3f.web.app" data-i18n="cta_webapp">Open the web app</a>
+              <a class="btn" href="https://app.podfolio.pcngroup.ch" data-i18n="cta_webapp">Open the web app</a>
               <a class="btn btn--dark" href="https://play.google.com/store/apps/details?id=ch.pcngroup.podfolio&amp;referrer=utm_source%3Dsite%26utm_medium%3Dorganic%26utm_campaign%3Dilpost_it" target="_blank" rel="noopener" data-i18n="cta_play">Get it on Google Play</a>
             </div>
           <div class="front__picture" data-reveal style="--d:2">
-            <div class="screen folio" data-ui role="img" aria-label="PodFolio player: Signal Weekly playing at 1.2x, 14 minutes in, with the episode's chapters listed underneath" style="height: 720px;">
-              <div class="s-bar"><span>&#8964;</span><span style="font-size:16px">In riproduzione</span></div>
-              <div class="s-pad">
-                <div class="cv-big live-cover" style="--cv:#244e8a">Signal<br>Weekly</div>
-                <p style="margin-top:16px;font-size:17px;font-weight:600">Il futuro del design essenziale</p>
-                <p class="s-meta">Signal Weekly &middot; Ep. 184</p>
-                <div class="track"><i id="live-track"></i></div>
-                <div class="times"><span id="live-time">14:21</span><span>37:42</span></div>
-                <div class="controls">
-                  <span class="ctl">10</span>
-                  <span class="ctl ctl--play"><span class="pause"></span></span>
-                  <span class="ctl">30</span>
-                </div>
-                <div style="display:flex;gap:8px;justify-content:center;margin:8px 0 6px">
-                  <span class="chip">1.2x</span><span class="chip">Sleep timer</span><span class="chip">Coda</span>
-                </div>
-                <p class="s-h">Capitoli</p>
-                <div class="moment"><span class="chip">00:00</span><b>Introduzione</b></div>
-                <div class="moment"><span class="chip chip--red">12:40</span><b>Meno schermate, più ascolto</b></div>
-                <div class="moment"><span class="chip">21:05</span><b>Domande degli ascoltatori</b></div>
-              </div>
-            </div>
+            <figure class="shot folio"><img src="screens/show.webp" width="824" height="1784" alt="The PodFolio web app showing Il Post's Globo: artwork, subscribe and share buttons, and its latest episodes" loading="lazy" decoding="async"></figure>
           </div>
           </div>
         </div>
@@ -958,7 +943,7 @@
       <div class="new__more">
         <div data-reveal style="--d:2">
           <p data-i18n="new_more">Also new: Chromecast, Spotify show links in search, and a quick way to delete downloads you have finished.</p>
-          <a class="text-link" href="#inside" data-i18n="new_link">See each one in the app</a>
+          <a class="text-link" href="#inside" data-i18n="new_link">See the app</a>
         </div>
       </div>
     </div>
@@ -971,111 +956,28 @@
     <div class="wrap inside__grid">
       <div class="index" data-reveal>
         <ul role="tablist" aria-labelledby="inside-title">
-          <li><button type="button" role="tab" id="t-queue" aria-controls="p-queue" aria-selected="true" data-sheet="#0078d7" data-i18n="inside_queue">Queue</button></li>
-          <li><button type="button" role="tab" id="t-chapters" aria-controls="p-chapters" aria-selected="false" tabindex="-1" data-sheet="#244e8a" data-i18n="inside_chapters">Chapters</button></li>
-          <li><button type="button" role="tab" id="t-brief" aria-controls="p-brief" aria-selected="false" tabindex="-1" data-sheet="#0a2c4e" data-i18n="inside_brief">Episode brief</button></li>
-          <li><button type="button" role="tab" id="t-share" aria-controls="p-share" aria-selected="false" tabindex="-1" data-sheet="#dce8f5" data-i18n="inside_share">Share a moment</button></li>
-          <li><button type="button" role="tab" id="t-downloads" aria-controls="p-downloads" aria-selected="false" tabindex="-1" data-sheet="#244e8a" data-i18n="inside_downloads">Downloads</button></li>
+          <li><button type="button" role="tab" id="t-library" aria-controls="p-library" aria-selected="true" data-sheet="#0078d7" data-i18n="inside_library">Library</button></li>
+          <li><button type="button" role="tab" id="t-show" aria-controls="p-show" aria-selected="false" tabindex="-1" data-sheet="#244e8a" data-i18n="inside_show">Show pages</button></li>
+          <li><button type="button" role="tab" id="t-player" aria-controls="p-player" aria-selected="false" tabindex="-1" data-sheet="#0a2c4e" data-i18n="inside_player">Player</button></li>
+          <li><button type="button" role="tab" id="t-settings" aria-controls="p-settings" aria-selected="false" tabindex="-1" data-sheet="#dce8f5" data-i18n="inside_settings">Settings</button></li>
         </ul>
       </div>
 
       <div class="stage" data-reveal style="--d:1">
         <div class="stage__sheet folio" id="stage-sheet"></div>
         <div class="stage__screens">
-          <!-- Queue -->
-          <div class="screen folio" id="p-queue" role="tabpanel" aria-labelledby="t-queue" data-ui>
-            <div role="img" aria-label="The queue screen: four episodes in order, the first one playing, each with a handle to drag it">
-              <div class="s-bar"><span>Coda (4)</span><span class="s-end">Svuota coda</span></div>
-              <div class="s-pad">
-                <div class="s-row is-on"><span class="cv cv--b">S</span><span><b>Il futuro del design essenziale</b><small>Signal Weekly &middot; in riproduzione</small></span><span class="handle"></span></div>
-                <div class="s-row"><span class="cv cv--c">M</span><span><b>Mercati, la settimana in breve</b><small>Morning Ledger &middot; 24 min</small></span><span class="handle"></span></div>
-                <div class="s-row"><span class="cv cv--a">D</span><span><b>Le notizie di oggi</b><small>Daily Brief &middot; 18 min</small></span><span class="handle"></span></div>
-                <div class="s-row"><span class="cv cv--d">R</span><span><b>Il cinema che resta</b><small>Studio Rounds &middot; 51 min</small></span><span class="handle"></span></div>
-              </div>
-              <div class="s-mini"><span class="cv cv--b">S</span><span><b>Il futuro del design essenziale</b><span class="s-meta">Signal Weekly</span></span><span class="ctl ctl--play"><span class="pause"></span></span></div>
-              <div class="s-nav"><span class="on">Libreria</span><span>Scopri</span><span>Download</span><span>Impostazioni</span></div>
-            </div>
-          </div>
-          <!-- Chapters -->
-          <div class="screen folio" id="p-chapters" role="tabpanel" aria-labelledby="t-chapters" data-ui hidden>
-            <div role="img" aria-label="An episode page with its chapter list; the chapter at 12:40 is the one playing">
-              <div class="s-bar"><span>&lsaquo;</span><span style="font-size:17px">Episodio</span></div>
-              <div class="s-pad">
-                <div class="s-row" style="border:0;background:none;padding:0 0 8px"><span class="cv cv--b">S</span><span><b>Il futuro del design essenziale</b><small>Signal Weekly &middot; 37 min</small></span><span class="s-play"><span class="tri"></span></span></div>
-                <p class="s-h">Capitoli</p>
-                <div class="s-card" style="padding:4px 14px">
-                  <div class="moment"><span class="chip">00:00</span><b>Introduzione</b></div>
-                  <div class="moment"><span class="chip">04:12</span><b>Perché togliere invece di aggiungere</b></div>
-                  <div class="moment"><span class="chip chip--red">12:40</span><b>Meno schermate, più ascolto</b></div>
-                  <div class="moment"><span class="chip">21:05</span><b>Domande degli ascoltatori</b></div>
-                  <div class="moment"><span class="chip">30:48</span><b>Cosa leggere questa settimana</b></div>
-                </div>
-              </div>
-              <div class="s-mini"><span class="cv cv--b">S</span><span><b>Meno schermate, più ascolto</b><span class="s-meta">12:40 &middot; capitolo 3 di 5</span></span><span class="ctl ctl--play"><span class="pause"></span></span></div>
-              <div class="s-nav"><span class="on">Libreria</span><span>Scopri</span><span>Download</span><span>Impostazioni</span></div>
-            </div>
-          </div>
-          <!-- Brief -->
-          <div class="screen folio" id="p-brief" role="tabpanel" aria-labelledby="t-brief" data-ui hidden>
-            <div role="img" aria-label="The episode brief: three summary points and three key moments with their timestamps, marked as made from the transcript">
-              <div class="s-bar"><span>&lsaquo;</span><span style="font-size:17px">Episodio</span></div>
-              <div class="s-pad">
-                <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px"><b style="font-size:16px">AI beta</b><span class="chip" style="height:26px">Da transcript</span></div>
-                <div class="s-card">
-                  <p style="font-weight:700;margin-bottom:12px">Brief</p>
-                  <div class="bullet">Un'app che fa meno cose, ma le fa senza distrazioni.</div>
-                  <div class="bullet">Perché la coda conta più della schermata iniziale.</div>
-                  <div class="bullet">Tre domande degli ascoltatori su download e sync.</div>
-                </div>
-                <div class="s-card" style="margin-top:12px">
-                  <p style="font-weight:700;margin-bottom:4px">Momenti chiave</p>
-                  <div class="moment"><span class="chip">04:12</span><b>Togliere invece di aggiungere</b></div>
-                  <div class="moment"><span class="chip">12:40</span><b>Meno schermate, più ascolto</b></div>
-                  <div class="moment"><span class="chip">21:05</span><b>Le domande</b></div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- Share -->
-          <div class="screen folio" id="p-share" role="tabpanel" aria-labelledby="t-share" data-ui hidden>
-            <div role="img" aria-label="Sharing from the player at 14:21: the link opens the episode at that minute in the PodFolio web app">
-              <div class="s-bar"><span>&#8964;</span><span style="font-size:16px">In riproduzione</span></div>
-              <div class="s-pad">
-                <div class="cv-big" style="--cv:#0078d7;aspect-ratio:auto;height:150px">Signal Weekly</div>
-                <div class="track" style="--p:.38"><i></i></div>
-                <div class="times"><span>14:21</span><span>37:42</span></div>
-              </div>
-              <div class="sheet">
-                <div class="grab"></div>
-                <p style="font-weight:700;font-size:16px;margin-bottom:10px">Condividi da 14:21</p>
-                <div class="link-box">Ascolta &laquo;Il futuro del design essenziale&raquo; di Signal Weekly (da 14:21) su Podfolio:<br>podfolio-10b3f.web.app/#/home/open?feed=&hellip;&amp;t=861</div>
-                <div style="display:flex;gap:8px;margin-top:12px"><span class="s-btn s-btn--tonal" style="flex:1">Copia link</span><span class="s-btn" style="flex:1">Condividi</span></div>
-              </div>
-              <div class="snack">Link copiato negli appunti</div>
-            </div>
-          </div>
-          <!-- Downloads -->
-          <div class="screen folio" id="p-downloads" role="tabpanel" aria-labelledby="t-downloads" data-ui hidden>
-            <div role="img" aria-label="The downloads screen: four episodes kept for offline listening, each with a delete action, and a button to delete them all">
-              <div class="s-bar"><span>Download</span><span class="s-end">Elimina tutti</span></div>
-              <div class="s-pad">
-                <div class="s-row"><span class="cv cv--b">S</span><span><b>Il futuro del design essenziale</b><small>38 MB &middot; ascoltato</small></span><span class="chip chip--red">Elimina</span></div>
-                <div class="s-row"><span class="cv cv--c">M</span><span><b>Mercati, la settimana in breve</b><small>22 MB</small></span><span class="chip">Offline</span></div>
-                <div class="s-row"><span class="cv cv--a">D</span><span><b>Le notizie di oggi</b><small>17 MB</small></span><span class="chip">Offline</span></div>
-                <div class="s-row"><span class="cv cv--d">R</span><span><b>Il cinema che resta</b><small>47 MB</small></span><span class="chip">Offline</span></div>
-              </div>
-              <div class="s-nav"><span>Libreria</span><span>Scopri</span><span class="on">Download</span><span>Impostazioni</span></div>
-            </div>
-          </div>
+          <figure class="shot folio" id="p-library" role="tabpanel" aria-labelledby="t-library"><img src="screens/library.webp" width="824" height="1784" alt="Library: subscribed shows and recent episodes" loading="lazy" decoding="async"></figure>
+          <figure class="shot folio" id="p-show" role="tabpanel" aria-labelledby="t-show" hidden><img src="screens/show.webp" width="824" height="1784" alt="Show page for Il Post's Globo, with its episodes, subscribe button and share button" loading="lazy" decoding="async"></figure>
+          <figure class="shot folio" id="p-player" role="tabpanel" aria-labelledby="t-player" hidden><img src="screens/player.webp" width="824" height="1784" alt="Full player for an episode of Indagini, with skip, speed, sleep timer, queue and share controls" loading="lazy" decoding="async"></figure>
+          <figure class="shot folio" id="p-settings" role="tabpanel" aria-labelledby="t-settings" hidden><img src="screens/settings.webp" width="824" height="1784" alt="Settings: Google sign-in for sync, Il Post subscriber sign-in, OPML import and export" loading="lazy" decoding="async"></figure>
         </div>
       </div>
 
       <div class="fact" data-reveal style="--d:2" aria-live="polite">
-        <p data-for="t-queue" data-i18n="fact_queue">Play next, add to the queue, drag to reorder. Sign in and the queue follows you to the web app.</p>
-        <p data-for="t-chapters" data-i18n="fact_chapters" hidden>When a feed includes chapters, tap one to jump there. No chapters in the feed, nothing extra on screen.</p>
-        <p data-for="t-brief" data-i18n="fact_brief" hidden>A short brief and the key moments of an episode, worked out on your device from its transcript or its chapters. In beta.</p>
-        <p data-for="t-share" data-i18n="fact_share" hidden>Share from where you are in the player. The link opens at that minute in the web app, so friends can listen without installing anything.</p>
-        <p data-for="t-downloads" data-i18n="fact_downloads" hidden>Keep episodes for the train or the plane, then delete them one by one or all at once.</p>
+        <p data-for="t-library" data-i18n="fact_library">Your shows and their newest episodes on one screen, ready to play.</p>
+        <p data-for="t-show" data-i18n="fact_show" hidden>Every show has its own page with episodes to stream or download, and a share link that opens in the web app.</p>
+        <p data-for="t-player" data-i18n="fact_player" hidden>Skip back 10 or forward 30 seconds, change speed, set a sleep timer, open the queue or share, all from one screen.</p>
+        <p data-for="t-settings" data-i18n="fact_settings" hidden>Sign in with Google to sync, connect your Il Post subscription, and import or export OPML.</p>
       </div>
     </div>
   </section>
@@ -1088,15 +990,7 @@
       </div>
 
       <div class="tile tile--1 folio" data-reveal>
-        <div class="screen" data-ui role="img" aria-label="Il Post sign-in in PodFolio's settings: email, password and a sign-in button">
-          <div class="s-bar" style="font-size:17px">Il Post</div>
-          <div class="s-pad">
-            <p style="font-weight:600;margin-bottom:14px">Accedi al tuo abbonamento</p>
-            <div class="field"><small>Email</small><span>nome@esempio.it</span></div>
-            <div class="field"><small>Password</small><span>&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;</span></div>
-            <span class="s-btn">Accedi</span>
-          </div>
-        </div>
+        <figure class="shot"><img src="screens/settings-ilpost.webp" width="824" height="1120" alt="Settings, with the Il Post subscriber sign-in" loading="lazy" decoding="async"></figure>
       </div>
       <div class="tile tile--2 folio" data-reveal style="--d:1">
         <div class="screen" data-ui role="img" aria-label="Signed in to Il Post; the podcast slug morning is typed into the field, ready to add">
@@ -1110,17 +1004,7 @@
         </div>
       </div>
       <div class="tile tile--3 folio" data-reveal style="--d:2">
-        <div class="screen" data-ui role="img" aria-label="The library with a new-episode notification for the Il Post show Morning, its episodes downloaded like any other podcast">
-          <div class="notif"><b>Nuovo episodio</b>Morning &middot; Il Post</div>
-          <div class="s-bar" style="font-size:18px">Libreria</div>
-          <div class="s-pad">
-            <div class="s-row is-on"><span class="cv cv--d">M</span><span><b>Episodio di oggi</b><small>Morning &middot; scaricato</small></span><span class="s-play"><span class="tri"></span></span></div>
-            <div class="s-row"><span class="cv cv--d">M</span><span><b>Episodio di ieri</b><small>Morning &middot; ascoltato</small></span><span class="s-play"><span class="tri"></span></span></div>
-            <div class="s-row"><span class="cv cv--b">S</span><span><b>Il futuro del design essenziale</b><small>Signal Weekly &middot; 37 min</small></span><span class="s-play"><span class="tri"></span></span></div>
-            <div class="s-row"><span class="cv cv--c">M</span><span><b>Mercati, la settimana in breve</b><small>Morning Ledger &middot; 24 min</small></span><span class="s-play"><span class="tri"></span></span></div>
-          </div>
-          <div class="s-nav"><span class="on">Libreria</span><span>Scopri</span><span>Download</span><span>Impostazioni</span></div>
-        </div>
+        <figure class="shot"><img src="screens/library.webp" width="824" height="1784" alt="Library with Il Post shows next to other podcasts" loading="lazy" decoding="async"></figure>
       </div>
 
       <div class="stage-text stage-text--1" data-reveal>
@@ -1168,7 +1052,7 @@
       <div class="drawer" data-reveal style="--d:1">
         <details class="card" name="faq" open>
           <summary><span class="card__tab" data-i18n="q1_tab">Platforms</span><span class="card__q" data-i18n="q1_q">Where can I use PodFolio?</span></summary>
-          <p class="card__a" data-i18n-html="q1_a">On Android, from Google Play, and in any modern browser at <a href="https://podfolio-10b3f.web.app">podfolio-10b3f.web.app</a>. On an iPhone, an iPad or a computer, use the web app.</p>
+          <p class="card__a" data-i18n-html="q1_a">On Android, from Google Play, and in any modern browser at <a href="https://app.podfolio.pcngroup.ch">app.podfolio.pcngroup.ch</a>. On an iPhone, an iPad or a computer, use the web app.</p>
         </details>
         <details class="card" name="faq">
           <summary><span class="card__tab" data-i18n="q2_tab">Web app</span><span class="card__q" data-i18n="q2_q">Do I pay again for the web app?</span></summary>
@@ -1204,7 +1088,7 @@
         <div class="footer__col">
           <h2>PodFolio</h2>
           <ul>
-            <li><a href="https://podfolio-10b3f.web.app" data-i18n="f_webapp">Web app</a></li>
+            <li><a href="https://app.podfolio.pcngroup.ch" data-i18n="f_webapp">Web app</a></li>
             <li><a href="https://play.google.com/store/apps/details?id=ch.pcngroup.podfolio&amp;referrer=utm_source%3Dsite%26utm_medium%3Dorganic%26utm_campaign%3Dilpost_it" target="_blank" rel="noopener">Google Play</a></li>
             <li><a href="#new" data-i18n="tab_new">What's new</a></li>
             <li><a href="#il-post">Il Post</a></li>
@@ -1235,7 +1119,7 @@
 
       <div class="footer__last">
         <p>&copy; <span id="year">2026</span> PCN Group</p>
-        <a class="btn btn--light btn--small" href="https://podfolio-10b3f.web.app" data-i18n="cta_webapp">Open the web app</a>
+        <a class="btn btn--light btn--small" href="https://app.podfolio.pcngroup.ch" data-i18n="cta_webapp">Open the web app</a>
       </div>
     </div>
   </footer>
@@ -1243,7 +1127,8 @@
   <script>
     document.documentElement.classList.add("js");
 
-    const WEB_APP = "https://podfolio-10b3f.web.app";
+    const WEB_APP = "https://app.podfolio.pcngroup.ch";
+    const PLAY_URL = "https://play.google.com/store/apps/details?id=ch.pcngroup.podfolio&referrer=utm_source%3Dsite%26utm_medium%3Dorganic%26utm_campaign%3Dilpost_it";
 
     const copy = {
       en: {
@@ -1263,25 +1148,25 @@
         finder_searching: "Searching…",
         finder_none: "No shows found for “{q}”. Try another name.",
         finder_error: "Search is unavailable right now. Open the web app and search there.",
-        finder_count: "{n} shows. Each one opens in the web app.",
+        finder_count: "{n} shows found.",
         finder_open: "Open",
         finder_spotify: "Spotify show",
         finder_spotify_by: "From the link you pasted",
+        finder_android: "Android app only",
+        finder_play: "Google Play",
         new_title: "What's new",
         new_statement: "Line up what's next in the queue <span class=\"slot\" aria-hidden=\"true\"><span>+ Coda</span></span>, jump straight to a chapter <span class=\"slot\" aria-hidden=\"true\"><span>12:40</span></span>, read a brief before you press play <span class=\"slot\" aria-hidden=\"true\"><span>Brief</span></span> and share the exact minute <span class=\"slot slot--red\" aria-hidden=\"true\"><span><span class=\"tri\"></span>14:21</span></span>.",
         new_more: "Also new: Chromecast, Spotify show links in search, and a quick way to delete downloads you have finished.",
-        new_link: "See each one in the app",
+        new_link: "See the app",
         inside_title: "Inside the app",
-        inside_queue: "Queue",
-        inside_chapters: "Chapters",
-        inside_brief: "Episode brief",
-        inside_share: "Share a moment",
-        inside_downloads: "Downloads",
-        fact_queue: "Play next, add to the queue, drag to reorder. Sign in and the queue follows you to the web app.",
-        fact_chapters: "When a feed includes chapters, tap one to jump there. No chapters in the feed, nothing extra on screen.",
-        fact_brief: "A short brief and the key moments of an episode, worked out on your device from its transcript or its chapters. In beta.",
-        fact_share: "Share from where you are in the player. The link opens at that minute in the web app, so friends can listen without installing anything.",
-        fact_downloads: "Keep episodes for the train or the plane, then delete them one by one or all at once.",
+        inside_library: "Library",
+        inside_show: "Show pages",
+        inside_player: "Player",
+        inside_settings: "Settings",
+        fact_library: "Your shows and their newest episodes on one screen, ready to play.",
+        fact_show: "Every show has its own page with episodes to stream or download, and a share link that opens in the web app.",
+        fact_player: "Skip back 10 or forward 30 seconds, change speed, set a sleep timer, open the queue or share, all from one screen.",
+        fact_settings: "Sign in with Google to sync, connect your Il Post subscription, and import or export OPML.",
         ilpost_title: "For Il Post subscribers",
         ilpost_lead: "Your subscriber podcasts sit in the same library as everything else, <strong>with downloads, sync and the queue</strong>.",
         il_1_t: "Sign in",
@@ -1301,7 +1186,7 @@
         questions_title: "Questions",
         q1_tab: "Platforms",
         q1_q: "Where can I use PodFolio?",
-        q1_a: "On Android, from Google Play, and in any modern browser at <a href=\"https://podfolio-10b3f.web.app\">podfolio-10b3f.web.app</a>. On an iPhone, an iPad or a computer, use the web app.",
+        q1_a: "On Android, from Google Play, and in any modern browser at <a href=\"https://app.podfolio.pcngroup.ch\">app.podfolio.pcngroup.ch</a>. On an iPhone, an iPad or a computer, use the web app.",
         q2_tab: "Web app",
         q2_q: "Do I pay again for the web app?",
         q2_a: "No. Premium is bought once in the Android app and belongs to your Google account. Sign in with the same account in the web app and it is unlocked there too.",
@@ -1339,25 +1224,25 @@
         finder_searching: "Ricerca in corso…",
         finder_none: "Nessun podcast trovato per “{q}”. Prova un altro nome.",
         finder_error: "La ricerca non è disponibile ora. Apri la web app e cerca lì.",
-        finder_count: "{n} podcast. Ognuno si apre nella web app.",
+        finder_count: "{n} podcast trovati.",
         finder_open: "Apri",
         finder_spotify: "Podcast Spotify",
         finder_spotify_by: "Dal link che hai incollato",
+        finder_android: "solo nell'app Android",
+        finder_play: "Google Play",
         new_title: "Le novità",
         new_statement: "Metti in coda cosa ascoltare dopo <span class=\"slot\" aria-hidden=\"true\"><span>+ Coda</span></span>, salta al capitolo che ti serve <span class=\"slot\" aria-hidden=\"true\"><span>12:40</span></span>, leggi un brief prima di premere play <span class=\"slot\" aria-hidden=\"true\"><span>Brief</span></span> e condividi il minuto esatto <span class=\"slot slot--red\" aria-hidden=\"true\"><span><span class=\"tri\"></span>14:21</span></span>.",
         new_more: "E ancora: Chromecast, link Spotify nella ricerca e un modo rapido per eliminare i download già ascoltati.",
-        new_link: "Guardale nell'app",
+        new_link: "Guarda l'app",
         inside_title: "Dentro l'app",
-        inside_queue: "Coda",
-        inside_chapters: "Capitoli",
-        inside_brief: "Brief dell'episodio",
-        inside_share: "Condividi un momento",
-        inside_downloads: "Download",
-        fact_queue: "Riproduci dopo, aggiungi alla coda, trascina per riordinare. Con l'accesso, la coda ti segue anche nella web app.",
-        fact_chapters: "Se il feed ha i capitoli, toccane uno per saltarci. Se non li ha, la schermata resta pulita.",
-        fact_brief: "Un breve riassunto e i momenti chiave di un episodio, calcolati sul tuo dispositivo dal transcript o dai capitoli. In beta.",
-        fact_share: "Condividi dal punto in cui sei nel player. Il link si apre a quel minuto nella web app: chi lo riceve ascolta senza installare nulla.",
-        fact_downloads: "Scarica gli episodi per il treno o l'aereo, poi eliminali uno alla volta o tutti insieme.",
+        inside_library: "Libreria",
+        inside_show: "Pagine dei podcast",
+        inside_player: "Player",
+        inside_settings: "Impostazioni",
+        fact_library: "I tuoi podcast e i loro episodi più recenti in una sola schermata, pronti da ascoltare.",
+        fact_show: "Ogni podcast ha la sua pagina, con gli episodi da ascoltare o scaricare e un link da condividere che si apre nella web app.",
+        fact_player: "Indietro di 10 o avanti di 30 secondi, velocità, sleep timer, coda e condivisione, tutto in una schermata.",
+        fact_settings: "Accedi con Google per la sincronizzazione, collega il tuo abbonamento a Il Post e importa o esporta OPML.",
         ilpost_title: "Per gli abbonati de Il Post",
         ilpost_lead: "I podcast riservati agli abbonati entrano nella stessa libreria di tutto il resto, <strong>con download, sync e coda</strong>.",
         il_1_t: "Accedi",
@@ -1377,7 +1262,7 @@
         questions_title: "Domande",
         q1_tab: "Piattaforme",
         q1_q: "Dove posso usare PodFolio?",
-        q1_a: "Su Android, da Google Play, e in qualsiasi browser recente su <a href=\"https://podfolio-10b3f.web.app\">podfolio-10b3f.web.app</a>. Su iPhone, iPad o computer usa la web app.",
+        q1_a: "Su Android, da Google Play, e in qualsiasi browser recente su <a href=\"https://app.podfolio.pcngroup.ch\">app.podfolio.pcngroup.ch</a>. Su iPhone, iPad o computer usa la web app.",
         q2_tab: "Web app",
         q2_q: "Devo pagare di nuovo per la web app?",
         q2_a: "No. Premium si acquista una volta nell'app Android ed è legato al tuo account Google. Accedi con lo stesso account nella web app ed è sbloccato anche lì.",
@@ -1444,7 +1329,7 @@
 
       const openLink = (feed) => `${WEB_APP}/#/home/open?${new URLSearchParams({ feed })}`;
 
-      const row = (href, image, title, by) => {
+      const row = (href, image, title, by, action) => {
         const li = document.createElement("li");
         const a = document.createElement("a");
         a.href = href;
@@ -1466,7 +1351,8 @@
         text.append(strong, small);
         const go = document.createElement("span");
         go.className = "go";
-        go.textContent = t("finder_open") + " →";
+        go.textContent = (action || t("finder_open")) + " →";
+        if (href === PLAY_URL) { a.target = "_blank"; a.rel = "noopener"; }
         a.append(text, go);
         li.append(a);
         return li;
@@ -1499,8 +1385,18 @@
             return;
           }
           status.textContent = t("finder_count").replace("{n}", shows.length);
+          // The web app reads feeds from the browser, so a feed that refuses
+          // cross-site requests cannot open there; send those to Google Play.
+          const webReady = await Promise.all(shows.map((item) =>
+            fetch(item.feedUrl, { method: "HEAD", signal: AbortSignal.timeout(5000) })
+              .then(() => true)
+              .catch((error) => error.name === "TimeoutError")));
+          if (id !== request) return;
           shows.forEach((item, index) => {
-            const li = row(openLink(item.feedUrl), item.artworkUrl100 || item.artworkUrl60, item.collectionName || item.trackName, item.artistName || "");
+            const by = item.artistName || "";
+            const li = webReady[index]
+              ? row(openLink(item.feedUrl), item.artworkUrl100 || item.artworkUrl60, item.collectionName || item.trackName, by)
+              : row(PLAY_URL, item.artworkUrl100 || item.artworkUrl60, item.collectionName || item.trackName, `${by} · ${t("finder_android")}`, t("finder_play"));
             li.style.animationDelay = `${index * 60}ms`;
             list.append(li);
           });
@@ -1509,22 +1405,6 @@
           status.textContent = t("finder_error");
         }
       });
-    })();
-
-    /* The playing clock in the hero player */
-    (() => {
-      const time = document.getElementById("live-time");
-      const track = document.getElementById("live-track");
-      if (!time || matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-      const total = 37 * 60 + 42;
-      let seconds = 14 * 60 + 21;
-      setInterval(() => {
-        if (document.hidden) return;
-        seconds = seconds >= total ? 0 : seconds + 1;
-        const m = Math.floor(seconds / 60), s = seconds % 60;
-        time.textContent = `${String(m).padStart(2, "0")}:${String(s).padStart(2, "0")}`;
-        track.style.setProperty("--p", (seconds / total).toFixed(4));
-      }, 1000);
     })();
 
     /* Inside the app: one held stage, the index swaps it */
@@ -1546,8 +1426,7 @@
         sheet.style.background = tab.dataset.sheet;
         if (focus) tab.focus({ preventScroll: true });
         if (!quiet && !fine.matches && list.scrollWidth > list.clientWidth) {
-          const item = tab.parentElement;
-          list.scrollTo({ left: item.offsetLeft - list.offsetLeft - 16, behavior: "smooth" });
+          tab.parentElement.scrollIntoView({ block: "nearest", inline: "start", behavior: "smooth" });
         }
       };
 
