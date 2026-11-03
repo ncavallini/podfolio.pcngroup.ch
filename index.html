@@ -15,6 +15,9 @@
   <meta property="og:title" content="PodFolio – i tuoi podcast, in un'app senza pubblicità">
   <meta property="og:description" content="Nessun abbonamento: prova gratis 14 giorni, poi CHF 3.99 una volta sola.">
   <meta property="og:url" content="https://podfolio.pcngroup.ch/">
+  <link rel="alternate" hreflang="it" href="https://podfolio.pcngroup.ch/">
+  <link rel="alternate" hreflang="en" href="https://podfolio.pcngroup.ch/en/">
+  <link rel="alternate" hreflang="x-default" href="https://podfolio.pcngroup.ch/en/">
   <meta property="og:image" content="https://podfolio.pcngroup.ch/img/og.png">
   <meta property="og:locale" content="it_IT">
   <meta name="twitter:card" content="summary_large_image">
@@ -69,6 +72,9 @@
     .logo { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 20px; color: inherit; text-decoration: none; }
     .logo img { width: 36px; height: 36px; }
 
+    .top-actions { display: flex; align-items: center; gap: 14px; }
+    .lang { color: var(--muted); font-weight: 600; font-size: 15px; text-decoration: none; }
+    .lang:hover { color: var(--brand); }
     .btn {
       display: inline-flex; align-items: center; justify-content: center; gap: 8px;
       min-height: 48px; padding: 0 22px; border-radius: 12px;
@@ -166,7 +172,10 @@
   <div class="wrap">
     <header class="top">
       <a class="logo" href="./"><img src="img/icon-512.png" alt="" width="36" height="36">PodFolio</a>
-      <a class="btn btn-brand btn-small" data-link="app" href="#">Apri nel browser</a>
+      <div class="top-actions">
+        <a class="lang" href="en/" hreflang="en" lang="en">EN</a>
+        <a class="btn btn-brand btn-small" data-link="app" href="#">Apri nel browser</a>
+      </div>
     </header>
 
     <div class="hero">
