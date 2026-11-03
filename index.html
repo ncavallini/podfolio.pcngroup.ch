@@ -1,25 +1,25 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="it">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PodFolio | Ad-free podcast player for Android and the web</title>
-  <meta
-    name="description"
-    content="PodFolio is an ad-free podcast player for Android and the browser: queue, chapters, episode briefs, share links that open in the web app, offline downloads, sync and Il Post subscriber podcasts. 14-day trial, then CHF 3.99 once."
-  >
-  <link rel="canonical" href="https://podfolio.pcngroup.ch/">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PodFolio – podcast in un'app senza pubblicità</title>
+  <meta name="description" content="PodFolio è il lettore di podcast senza pubblicità e senza abbonamento: prova gratis 14 giorni, poi CHF 3.99 una volta sola. Su Android e nel browser.">
+  <meta name="theme-color" content="#0078D7">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="icon" type="image/png" href="img/favicon.png">
+  <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="PodFolio">
-  <meta property="og:title" content="PodFolio, podcasts without ads or a subscription">
-  <meta property="og:description" content="Ad-free podcast player for Android and the browser. 14-day trial, then CHF 3.99 once.">
+  <meta property="og:title" content="PodFolio – i tuoi podcast, in un'app senza pubblicità">
+  <meta property="og:description" content="Nessun abbonamento: prova gratis 14 giorni, poi CHF 3.99 una volta sola.">
   <meta property="og:url" content="https://podfolio.pcngroup.ch/">
-  <meta property="og:image" content="https://app.podfolio.pcngroup.ch/icons/Icon-512.png">
-  <meta name="theme-color" content="#0078d7">
-  <link rel="icon" type="image/svg+xml" href="favicon.svg">
-  <link rel="preload" href="fonts/open-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <meta property="og:image" content="https://podfolio.pcngroup.ch/img/og.png">
+  <meta property="og:locale" content="it_IT">
+  <meta name="twitter:card" content="summary_large_image">
+
   <style>
-    /* Open Sans stands in where Segoe UI (PCN Group's face) is not installed. */
     @font-face {
       font-family: "Open Sans";
       font-style: normal;
@@ -28,1450 +28,337 @@
       src: url(fonts/open-sans-latin.woff2) format("woff2");
       unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
     }
-
     :root {
-      /* PCN Group field and PodFolio's icon colours */
-      --blue: #0078d7;
-      --blue-press: #0067b8;
-      --deep: #244e8a;
-      --navy: #0a2c4e;
-      --red: #d63d2d;
-      --red-field: #c4372a;
-      --mist: #dce8f5;
-      --paper: #ffffff;
-      --ink: #0f1f2e;
-      --muted: #3f5266;
-      --on-dark-muted: #c9dcf0;
-
-      --font: "Segoe UI", "Open Sans", system-ui, sans-serif;
-
-      /* five steps */
-      --t-display: clamp(64px, 10vw, 160px);
-      --t-head: clamp(34px, 4.2vw, 64px);
-      --t-statement: clamp(24px, 2.5vw, 36px);
-      --t-body: 18px;
-      --t-small: 15px;
-
-      --margin: clamp(16px, 7%, 112px);
-      --gap: clamp(16px, 2vw, 32px);
-      --section: clamp(96px, 11vw, 176px);
-      --fold: 14px;
-      --ease-out: cubic-bezier(.16, 1, .3, 1);
+      --brand: #0078D7;
+      --brand-dark: #23508A;
+      --accent: #D73D2C;
+      --bg: #F7F8FA;
+      --surface: #FFFFFF;
+      --text: #14181F;
+      --muted: #566070;
+      --line: #E1E5EB;
+      --on-brand: #FFFFFF;
+      --on-brand-muted: #DCEBFA;
     }
-
-    *, *::before, *::after { box-sizing: border-box; }
-
-    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
-
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #0E1117;
+        --surface: #171B23;
+        --text: #E8ECF2;
+        --muted: #A3ACBA;
+        --line: #2A303B;
+      }
+    }
+    * { box-sizing: border-box; }
+    [hidden] { display: none !important; }
+    html { -webkit-text-size-adjust: 100%; }
     body {
       margin: 0;
-      color: var(--ink);
-      background: var(--paper);
-      font-family: var(--font);
-      font-size: var(--t-body);
-      line-height: 1.55;
-      -webkit-font-smoothing: antialiased;
+      background: var(--bg);
+      color: var(--text);
+      font: 17px/1.55 "Open Sans", "Segoe UI", Roboto, system-ui, -apple-system, sans-serif;
     }
+    a { color: var(--brand); }
+    img { max-width: 100%; height: auto; display: block; }
+    .wrap { max-width: 1080px; margin: 0 auto; padding: 0 20px; }
 
-    a { color: inherit; }
-    img { display: block; max-width: 100%; }
-    h1, h2, h3, p { margin: 0; }
-    button { font: inherit; color: inherit; }
-
-    :focus-visible { outline: 3px solid var(--ink); outline-offset: 3px; }
-    .on-dark :focus-visible, .desk :focus-visible { outline-color: #ffffff; }
-    #listen :focus-visible { outline-color: var(--ink); }
-    ::selection { background: var(--red); color: #ffffff; }
-
-    .sr-only {
-      position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
-      overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;
+    header.top {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 18px 0;
     }
+    .logo { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 20px; color: inherit; text-decoration: none; }
+    .logo img { width: 36px; height: 36px; }
 
-    .skip {
-      position: absolute; left: var(--margin); top: 12px; z-index: 50;
-      padding: 12px 18px; background: var(--paper); color: var(--ink); text-decoration: none;
-      clip-path: inset(50%); white-space: nowrap;
-    }
-    .skip:focus { clip-path: none; }
-
-    /* The motif: PodFolio's folio, a rectangle whose top-right corner is red. */
-    .folio { position: relative; }
-    .folio::after {
-      content: "";
-      position: absolute;
-      top: 0;
-      right: 0;
-      width: var(--fold);
-      height: var(--fold);
-      background: var(--red);
-      clip-path: polygon(0 0, 100% 0, 100% 100%);
-      pointer-events: none;
-    }
-
-    /* Buttons: flat, square, the folio corner */
     .btn {
-      --fold: 12px;
-      position: relative;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 52px;
-      padding: 0 26px;
-      border: 0;
-      background: var(--blue-press);
-      color: #ffffff;
-      font-size: var(--t-body);
-      font-weight: 600;
-      text-decoration: none;
-      cursor: pointer;
-      transition: background-color 200ms ease, transform 160ms var(--ease-out);
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      min-height: 48px; padding: 0 22px; border-radius: 12px;
+      font: inherit; font-weight: 600; text-decoration: none; border: 2px solid transparent; cursor: pointer;
+      transition: transform .12s ease, box-shadow .12s ease;
     }
-    .btn::after {
-      content: "";
-      position: absolute; top: 0; right: 0;
-      width: var(--fold); height: var(--fold);
-      background: var(--red);
-      clip-path: polygon(0 0, 100% 0, 100% 100%);
-      transition: width 240ms var(--ease-out), height 240ms var(--ease-out);
-    }
-    .btn:hover { background: #00599f; }
-    .btn:hover::after, .btn:focus-visible::after { width: 20px; height: 20px; }
-    .btn:active { transform: scale(.97); }
-    .btn--dark { background: var(--navy); }
-    .btn--dark:hover { background: #061d35; }
-    .btn--light { background: var(--paper); color: var(--ink); }
-    .btn--light:hover { background: var(--mist); }
-    .btn--small { min-height: 44px; padding: 0 18px; font-size: var(--t-small); }
-
-    .text-link {
-      font-weight: 600;
-      text-decoration: underline;
-      text-decoration-thickness: 2px;
-      text-underline-offset: 5px;
-      transition: text-underline-offset 200ms var(--ease-out), color 200ms ease;
-    }
-    .text-link:hover { text-underline-offset: 8px; }
-
-    .wrap { padding-inline: var(--margin); }
-
-    /* ---------- The desk: hero and the open folder ---------- */
-    .desk {
-      background: var(--blue);
-      color: #ffffff;
-      padding-bottom: var(--margin);
-      overflow: hidden;
-    }
-
-    .topbar {
-      display: grid;
-      grid-template-columns: 1fr auto 1fr;
-      align-items: center;
-      padding: 20px var(--margin) 0;
-      font-size: var(--t-small);
-      position: relative;
-      z-index: 5;
-    }
-
-    .lang { display: flex; gap: 4px; }
-    .lang button {
-      min-width: 44px;
-      min-height: 44px;
-      padding: 0 10px;
-      border: 0;
-      background: transparent;
-      color: #ffffff;
-      font-size: var(--t-small);
-      font-weight: 600;
-      cursor: pointer;
-      transition: background-color 200ms ease;
-    }
-    .lang button:hover { background: var(--blue-press); }
-    .lang button[aria-pressed="true"] { background: var(--paper); color: var(--ink); }
-
-    .wordmark {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      font-size: var(--t-body);
-      font-weight: 600;
-      text-decoration: none;
-    }
-    .wordmark svg { width: 30px; height: 30px; }
-
-    .topbar__link { justify-self: end; text-decoration: none; font-weight: 600; display: inline-flex; align-items: center; min-height: 44px; }
-    .topbar__link span { text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 5px; }
-    .topbar__link:hover span { text-underline-offset: 8px; }
+    .btn:hover { transform: translateY(-1px); }
+    .btn:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+    .btn-light { background: var(--on-brand); color: var(--brand-dark); }
+    .btn-ghost { border-color: var(--on-brand-muted); color: var(--on-brand); }
+    .btn-brand { background: var(--brand); color: var(--on-brand); }
+    .btn-small { min-height: 40px; padding: 0 16px; font-size: 15px; }
 
     .hero {
-      --stack-top: 47svh;
-      --tab-h: 40px;
-      --step: 60px;
-      position: relative;
-      height: calc(var(--stack-top) + var(--tab-h) + 4 * var(--step));
-      min-height: 560px;
-      text-align: center;
-    }
-
-    .hero h1 {
-      padding-top: clamp(28px, 4.4vw, 64px);
-      font-size: var(--t-display);
-      font-weight: 600;
-      line-height: .95;
-      letter-spacing: -0.035em;
-    }
-
-    .hero__sub {
-      max-width: 46ch;
-      margin: 32px auto 0;
-      font-size: 20px;
-      line-height: 1.5;
-    }
-
-    .stack {
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-    }
-
-    .folder {
-      --i: 0;
-      position: absolute;
-      left: var(--margin);
-      right: var(--margin);
-      top: calc(var(--stack-top) + var(--tab-h) + var(--i) * var(--step));
-      bottom: -120px;
-      display: block;
-      background: var(--c);
-      color: var(--on);
-      text-decoration: none;
-      pointer-events: auto;
-    }
-
-    .tab {
-      position: absolute;
-      left: var(--x);
-      bottom: 100%;
-      display: flex;
-      align-items: center;
-      width: clamp(150px, 18%, 260px);
-      height: var(--tab-h);
-      padding: 0 40px 0 22px;
-      background: var(--c);
-      color: var(--on);
-      font-size: var(--t-body);
-      font-weight: 600;
-      clip-path: polygon(0 0, calc(100% - var(--tab-h)) 0, 100% 100%, 0 100%);
-      transition: transform 240ms var(--ease-out);
-    }
-    a.folder:hover .tab, a.folder:focus-visible .tab { transform: translateY(-6px); }
-    a.folder:focus-visible { outline: none; }
-    a.folder:focus-visible .tab { text-decoration: underline; text-underline-offset: 4px; }
-
-    .f-questions { --i: 0; --c: var(--navy); --on: #ffffff; --x: 80%; }
-    .f-price     { --i: 1; --c: var(--red-field); --on: #ffffff; --x: 60%; }
-    .f-ilpost    { --i: 2; --c: var(--deep); --on: #ffffff; --x: 40%; }
-    .f-new       { --i: 3; --c: var(--mist); --on: var(--ink); --x: 20%; }
-
-    /* The front folder: open, running into the page */
-    .front {
-      --fold: clamp(56px, 8vw, 128px);
-      --c: var(--paper);
-      --on: var(--ink);
-      --x: 0%;
-      --tab-h: 40px;
-      position: relative;
-      z-index: 3;
-      margin: 0 var(--margin);
-      background: var(--paper);
-      color: var(--ink);
-      padding: clamp(28px, 3vw, 48px) clamp(20px, 3.4vw, 56px) clamp(40px, 5vw, 72px);
-      scroll-margin-top: 80px;
-    }
-    .front > .tab { pointer-events: none; }
-
-    .front__grid {
-      display: grid;
-      grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
-      gap: clamp(32px, 4vw, 72px);
-      align-items: start;
-    }
-
-    .front__actions { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 48px; }
-    .front__side { display: grid; justify-items: start; }
-
-    .front h2 {
-      font-size: var(--t-head);
-      font-weight: 600;
-      line-height: 1.02;
-      letter-spacing: -0.025em;
-      text-wrap: balance;
-    }
-
-    .front__lead { margin-top: 28px; max-width: 46ch; }
-
-    /* The live thing: search any show, open it in the web app */
-    .finder { margin-top: 48px; max-width: 560px; }
-    .finder[hidden] { display: none; }
-    .finder label { display: block; font-weight: 600; margin-bottom: 12px; }
-    .finder__row { display: flex; gap: 0; }
-    .finder input {
-      flex: 1;
-      min-width: 0;
-      min-height: 56px;
-      padding: 0 18px;
-      border: 2px solid var(--ink);
-      border-right: 0;
-      border-radius: 0;
-      background: var(--paper);
-      color: var(--ink);
-      font: inherit;
-      font-size: var(--t-body);
-    }
-    .finder input::placeholder { color: var(--muted); }
-    .finder input:focus { outline: none; border-color: var(--blue-press); }
-    .finder .btn { min-height: 56px; }
-    .finder__status { margin-top: 14px; font-size: var(--t-small); color: var(--muted); min-height: 1.5em; }
-
-    .results { list-style: none; margin: 8px 0 0; padding: 0; display: grid; gap: 6px; }
-    .results a {
-      display: grid;
-      grid-template-columns: 64px minmax(0, 1fr) auto;
-      gap: 16px;
-      align-items: center;
-      padding: 10px 12px 10px 10px;
-      background: #f1f5fa;
-      text-decoration: none;
-      transition: background-color 200ms ease, transform 200ms var(--ease-out);
-    }
-    .results a:hover, .results a:focus-visible { background: var(--mist); transform: translateX(4px); }
-    .results img, .results .cover-fallback { width: 64px; height: 64px; object-fit: cover; background: var(--deep); }
-    .results strong { display: block; font-size: var(--t-body); font-weight: 600; line-height: 1.3; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-    .results span.by { display: block; font-size: var(--t-small); color: var(--muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-    .results .go { font-size: var(--t-small); font-weight: 600; color: var(--blue-press); white-space: nowrap; }
-    .results li { opacity: 0; transform: translateY(12px); animation: rise 420ms var(--ease-out) forwards; }
-
-    .front__picture { display: flex; justify-content: center; }
-
-    /* ---------- App fragments (the product's own interface) ---------- */
-    .screen {
-      --fold: 34px;
-      position: relative;
-      width: 340px;
-      max-width: 100%;
-      background: #f7f9fc;
-      color: #191c1d;
-      font-family: var(--font);
-      font-size: 14px;
-      line-height: 1.4;
-      overflow: hidden;
-      text-align: left;
-    }
-    .screen * { pointer-events: none; }
-    .s-bar { display: flex; align-items: center; gap: 12px; height: 60px; padding: 0 18px; font-size: 20px; font-weight: 600; }
-    .s-bar .s-end { margin-left: auto; font-size: 14px; color: #0063b1; font-weight: 600; }
-    .s-pad { padding: 0 16px; }
-    .s-h { font-size: 16px; font-weight: 700; margin: 18px 0 10px; }
-    .s-card { background: #ffffff; border: 1px solid #d7dde5; border-radius: 14px; padding: 14px; }
-    .s-row { display: grid; grid-template-columns: 46px minmax(0, 1fr) auto; gap: 12px; align-items: center; padding: 10px 12px; background: #ffffff; border: 1px solid #d7dde5; border-radius: 14px; margin-bottom: 8px; }
-    .s-row.is-on { background: #e3eefa; border-color: #9cc3ea; }
-    .s-row b { display: block; font-size: 14px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-    .s-row small, .s-meta { display: block; font-size: 13px; color: #5a6470; }
-    .cv { width: 46px; height: 46px; border-radius: 8px; display: grid; place-items: center; color: #ffffff; font-weight: 700; font-size: 18px; background: var(--cv, #0078d7); }
-    .cv--a { --cv: #0078d7; } .cv--b { --cv: #244e8a; } .cv--c { --cv: #d63d2d; } .cv--d { --cv: #0a2c4e; } .cv--e { --cv: #3a8a5c; }
-    .cv-big { width: 100%; aspect-ratio: 1; border-radius: 18px; display: grid; place-items: end start; padding: 22px; color: #ffffff; font-size: 30px; font-weight: 700; line-height: 1; background: var(--cv, #0078d7); }
-    .chip { display: inline-flex; align-items: center; height: 30px; padding: 0 12px; border-radius: 999px; background: #e3eefa; color: #0b4a85; font-size: 13px; font-weight: 600; white-space: nowrap; }
-    .chip--red { background: #fbe3e0; color: #a3271b; }
-    .s-play { width: 40px; height: 40px; border-radius: 12px; background: #fbe3e0; display: grid; place-items: center; }
-    .tri { width: 0; height: 0; border-left: 12px solid #d63d2d; border-top: 8px solid transparent; border-bottom: 8px solid transparent; margin-left: 3px; }
-    .pause { width: 14px; height: 16px; border-left: 5px solid currentColor; border-right: 5px solid currentColor; }
-    .handle { width: 18px; height: 12px; border-top: 2px solid #8a939d; border-bottom: 2px solid #8a939d; position: relative; }
-    .handle::after { content: ""; position: absolute; left: 0; right: 0; top: 3px; border-top: 2px solid #8a939d; }
-    .track { position: relative; height: 6px; border-radius: 3px; background: #d4e2f1; margin: 18px 0 8px; overflow: hidden; }
-    .track i { position: absolute; inset: 0; background: #0078d7; transform-origin: left; transform: scaleX(var(--p, .38)); }
-    .times { display: flex; justify-content: space-between; font-size: 13px; color: #5a6470; font-variant-numeric: tabular-nums; }
-    .controls { display: flex; align-items: center; justify-content: center; gap: 26px; margin: 16px 0 6px; }
-    .ctl { width: 46px; height: 46px; border-radius: 50%; display: grid; place-items: center; background: #e3eefa; color: #0b4a85; font-weight: 700; font-size: 14px; }
-    .ctl--play { width: 68px; height: 68px; background: #d63d2d; color: #ffffff; }
-    /* taste-skill-ignore: fragment chrome (data-ui) */
-    .s-nav { position: absolute; left: 0; right: 0; bottom: 0; display: grid; grid-template-columns: repeat(4, 1fr); padding: 10px 6px 14px; background: #ffffff; border-top: 1px solid #e1e5ea; font-size: 13px; text-align: center; color: #4a525b; }
-    .s-nav span::before { content: ""; display: block; width: 14px; height: 14px; margin: 0 auto 6px; border-radius: 50%; background: #4a525b; }
-    .s-nav .on { color: #0063b1; font-weight: 600; }
-    .s-nav .on::before { background: #0063b1; outline: 6px solid #dceafa; }
-    .s-mini { position: absolute; left: 10px; right: 10px; bottom: 74px; display: grid; grid-template-columns: 40px minmax(0, 1fr) auto; gap: 10px; align-items: center; padding: 8px 10px; background: #ffffff; border: 1px solid #d7dde5; border-radius: 14px; }
-    .s-mini .cv { width: 40px; height: 40px; font-size: 15px; }
-    .s-mini b { font-size: 13px; display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-    .s-mini .ctl--play { width: 38px; height: 38px; }
-    .s-mini .pause { width: 10px; height: 12px; border-width: 0 4px; }
-    .bullet { display: grid; grid-template-columns: 10px 1fr; gap: 10px; margin-bottom: 10px; font-size: 14px; }
-    .bullet::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: #0078d7; margin-top: 6px; }
-    .moment { display: grid; grid-template-columns: auto 1fr; gap: 12px; align-items: start; padding: 8px 0; }
-    .moment b { font-size: 14px; font-weight: 600; display: block; }
-    .field { border: 1px solid #8a939d; border-radius: 6px; padding: 8px 12px; margin-bottom: 12px; background: #ffffff; }
-    .field small { display: block; font-size: 13px; color: #0063b1; }
-    .field span { font-size: 15px; }
-    .s-btn { display: flex; align-items: center; justify-content: center; height: 44px; border-radius: 22px; background: #0063b1; color: #ffffff; font-weight: 600; font-size: 14px; }
-    .s-btn--tonal { background: #e3eefa; color: #0b4a85; }
-    .snack { position: absolute; left: 12px; right: 12px; bottom: 16px; padding: 14px 16px; border-radius: 6px; background: #2e3133; color: #f0f1f3; font-size: 14px; }
-    /* taste-skill-ignore: fragment chrome (data-ui) */
-    .sheet { position: absolute; left: 0; right: 0; bottom: 0; padding: 18px 16px 84px; background: #ffffff; border-radius: 22px 22px 0 0; border-top: 1px solid #d7dde5; }
-    .sheet .grab { width: 36px; height: 4px; border-radius: 2px; background: #c3c9d1; margin: 0 auto 14px; }
-    .link-box { padding: 12px; border-radius: 10px; background: #f1f5fa; font-size: 13px; line-height: 1.45; overflow-wrap: anywhere; color: #2b3540; }
-    .notif { margin: 10px 12px 0; padding: 12px 14px; border-radius: 16px; background: #ffffff; border: 1px solid #d7dde5; font-size: 13px; }
-    .notif b { display: block; font-size: 14px; }
-
-    /* Real screenshots of the web app */
-    .shot { --fold: 34px; position: relative; width: 340px; max-width: 100%; margin: 0; background: #f7f9fc; overflow: hidden; }
-    .shot img { width: 100%; height: auto; }
-
-    /* ---------- What's new: one statement ---------- */
-    .new { background: var(--mist); padding-block: var(--section); }
-    .new h2, .section-title {
-      font-size: var(--t-head);
-      font-weight: 600;
-      line-height: 1.02;
-      letter-spacing: -0.025em;
-      text-wrap: balance;
-    }
-    .statement {
-      margin-top: clamp(40px, 5vw, 72px);
-      max-width: 30em;
-      font-size: var(--t-statement);
-      font-weight: 500;
-      line-height: 1.32;
-      letter-spacing: -0.01em;
-    }
-    .slot {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      height: 1.1em;
-      padding: 0 .35em;
-      margin: 0 .1em;
-      vertical-align: -0.18em;
-      background: var(--paper);
-      color: #0b4a85;
-      font-size: 1em;
-    }
-    .slot span { font-size: max(15px, .52em); font-weight: 600; line-height: 1; white-space: nowrap; }
-    .slot--red { background: var(--red); color: #ffffff; }
-    .slot .tri { border-left-color: currentColor; margin-right: 6px; border-left-width: 9px; border-top-width: 6px; border-bottom-width: 6px; }
-    .new__more {
-      display: grid;
-      grid-template-columns: repeat(12, minmax(0, 1fr));
-      gap: var(--gap);
-      margin-top: 72px;
-    }
-    .new__more > div { grid-column: 7 / 13; }
-    .new__more p { max-width: 44ch; margin-bottom: 20px; }
-
-    /* ---------- Inside the app: index with one held stage ---------- */
-    .inside { padding-block: var(--section); background: var(--paper); }
-    .inside__title { margin-bottom: clamp(24px, 3vw, 48px); }
-    .inside .stage { margin-top: clamp(40px, 8svh, 120px); }
-    .inside__grid {
-      display: grid;
-      grid-template-columns: minmax(0, 4fr) minmax(0, 6fr) minmax(0, 2fr);
-      gap: var(--gap);
-      align-items: end;
-    }
-    .index { align-self: end; padding-bottom: 7%; }
-    .index ul { list-style: none; margin: 0; padding: 0; }
-    .index button {
-      display: inline-flex;
-      align-items: center;
-      gap: .4em;
-      min-height: 48px;
-      padding: 0;
-      border: 0;
-      background: none;
-      color: var(--muted);
-      font-size: var(--t-statement);
-      font-weight: 600;
-      line-height: 1.15;
-      text-align: left;
-      cursor: pointer;
-      transition: color 200ms ease, transform 240ms var(--ease-out);
-    }
-    .index button::before {
-      content: "";
-      width: .45em;
-      height: .45em;
-      background: var(--red);
-      clip-path: polygon(0 0, 100% 0, 100% 100%);
-      opacity: 0;
-      transform: scale(.6);
-      transition: transform 240ms var(--ease-out), opacity 200ms ease;
-    }
-    .index button:hover { color: var(--ink); transform: translateX(6px); }
-    .index button[aria-selected="true"] { color: var(--ink); }
-    .index button[aria-selected="true"]::before { transform: none; opacity: 1; }
-
-    .stage {
-      position: relative;
-      display: grid;
-      place-items: end center;
-      height: min(64svh, 620px);
-      align-self: end;
-    }
-    .stage__sheet {
-      --fold: clamp(40px, 5vw, 72px);
-      position: absolute;
-      inset: 0;
-      background: var(--sheet, var(--blue));
-      transition: background-color 400ms ease;
-    }
-    .stage__screens { position: absolute; left: 0; right: 0; bottom: 9%; display: grid; justify-items: center; align-items: end; }
-    .stage__screens > .shot img { height: 100%; object-fit: cover; object-position: top; }
-    .stage__screens > .shot {
-      grid-area: 1 / 1;
-      height: min(70svh, 640px);
-      transition: opacity 300ms ease, transform 420ms var(--ease-out);
-    }
-    .stage__screens > .shot[hidden] { display: block; opacity: 0; transform: translateY(16px); visibility: hidden; }
-    .fact { align-self: end; padding-bottom: 7%; font-size: var(--t-body); line-height: 1.5; }
-    .fact p[hidden] { display: none; }
-
-    /* ---------- Il Post: tiles that grow ---------- */
-    .ilpost { background: var(--deep); color: #ffffff; padding-block: var(--section); }
-    .ilpost__grid {
-      display: grid;
-      grid-template-columns: repeat(12, minmax(0, 1fr));
-      column-gap: 10px;
-      row-gap: 24px;
-      align-items: end;
-    }
-    .ilpost__head { grid-column: 1 / 8; grid-row: 1; align-self: start; }
-    .ilpost__head p { margin-top: 24px; max-width: 40ch; }
-    .ilpost__head p strong { color: #ffffff; font-weight: 600; }
-    .tile {
-      --fold: 28px;
-      position: relative;
-      display: flex;
-      justify-content: center;
-      align-items: flex-start;
-      overflow: hidden;
-      background: var(--tc);
-      padding-top: clamp(20px, 2.4vw, 36px);
-    }
-    .tile .screen, .tile .shot { width: min(300px, 82%); flex: none; }
-    .tile .screen { height: 600px; }
-    .tile--1 { --tc: var(--mist); grid-column: 1 / 4; grid-row: 2; height: 30svh; min-height: 240px; }
-    .tile--2 { --tc: var(--paper); grid-column: 4 / 8; grid-row: 2; height: 44svh; min-height: 340px; }
-    .tile--3 { --tc: var(--blue); grid-column: 8 / 13; grid-row: 1 / 3; height: 60svh; min-height: 460px; }
-    .stage-text { grid-row: 3; padding-right: 16px; }
-    .stage-text h3 { font-size: 20px; font-weight: 600; margin-bottom: 6px; }
-    .stage-text p { color: #ffffff; font-size: var(--t-body); max-width: 34ch; }
-    .stage-text--1 { grid-column: 1 / 4; }
-    .stage-text--2 { grid-column: 4 / 8; }
-    .stage-text--3 { grid-column: 8 / 13; }
-
-    /* ---------- Price: names on the left, one figure on the right ---------- */
-    .price { background: var(--red-field); color: #ffffff; padding-block: var(--section); }
-    .plans {
-      display: grid;
-      grid-template-columns: minmax(0, 5fr) minmax(0, 1fr) minmax(0, 6fr);
-      grid-template-rows: auto auto auto 1fr;
-      column-gap: var(--gap);
-    }
-    .plans h2 { grid-column: 1; grid-row: 1; margin-bottom: clamp(32px, 4vw, 64px); }
-    .plan { display: contents; }
-    .plan__name {
-      grid-column: 1;
-      display: flex;
-      align-items: center;
-      gap: .3em;
-      width: max-content;
-      padding: 0;
-      border: 0;
-      background: none;
-      color: #f2c6c0;
-      font-size: var(--t-head);
-      font-weight: 600;
-      line-height: 1.2;
-      letter-spacing: -0.025em;
-      cursor: pointer;
-      transition: color 200ms ease;
-    }
-    .plan__name::before {
-      content: "";
-      width: .3em;
-      height: .3em;
-      background: #ffffff;
-      clip-path: polygon(0 0, 100% 0, 100% 100%);
-      opacity: 0;
-      transform: scale(.6);
-      transition: transform 240ms var(--ease-out), opacity 200ms ease;
-    }
-    .plan__name:hover { color: #ffffff; }
-    .plan__name[aria-expanded="true"] { color: #ffffff; }
-    .plan__name[aria-expanded="true"]::before { transform: none; opacity: 1; }
-    .plan:nth-of-type(1) .plan__name { grid-row: 2; }
-    .plan:nth-of-type(2) .plan__name { grid-row: 3; }
-    .plan__stage {
-      grid-column: 3;
-      grid-row: 1 / 5;
-      align-self: start;
-      transition: opacity 200ms ease;
-    }
-    .plan__stage[hidden] { display: block; opacity: 0; visibility: hidden; }
-    .figure { display: flex; align-items: baseline; flex-wrap: wrap; gap: 0 18px; }
-    .figure strong { white-space: nowrap; font-size: var(--t-display); font-weight: 600; line-height: 1; letter-spacing: -0.04em; font-variant-numeric: tabular-nums; }
-    .figure span { font-size: var(--t-body); font-weight: 600; }
-    .plan__stage p { margin: 28px 0 32px; max-width: 40ch; }
-
-    /* ---------- Questions: cards filed in a drawer ---------- */
-    .questions { background: var(--navy); color: #ffffff; padding-block: var(--section); }
-    .questions__inner { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: var(--gap); }
-    .questions h2 { grid-column: 3 / 11; margin-bottom: 88px; }
-    .drawer { grid-column: 3 / 11; }
-    .card {
-      --k: 0;
-      position: relative;
-      background: var(--cc);
-      color: var(--co);
-      padding: 0 clamp(20px, 2.4vw, 36px) 40px;
-      transition: transform 240ms var(--ease-out);
-    }
-    .card + .card { margin-top: 0; }
-    .card:nth-child(3n+1) { --cc: var(--paper); --co: var(--ink); --cm: var(--muted); }
-    .card:nth-child(3n+2) { --cc: var(--mist); --co: var(--ink); --cm: var(--muted); }
-    .card:nth-child(3n+3) { --cc: var(--blue); --co: #ffffff; --cm: #ffffff; }
-    .card summary { list-style: none; cursor: pointer; padding-top: 20px; min-height: 56px; }
-    .card summary::-webkit-details-marker { display: none; }
-    .card__tab {
-      position: absolute;
-      bottom: 100%;
-      left: calc(var(--k) * 150px);
-      display: flex;
-      align-items: center;
-      width: 200px;
-      height: 40px;
-      padding: 0 40px 0 clamp(20px, 2.4vw, 36px);
-      background: var(--cc);
-      color: var(--co);
-      font-size: var(--t-small);
-      font-weight: 600;
-      clip-path: polygon(0 0, calc(100% - 40px) 0, 100% 100%, 0 100%);
-    }
-    .card__q { display: flex; justify-content: space-between; gap: 24px; font-size: 20px; font-weight: 600; line-height: 1.35; }
-    .card__q::after {
-      content: "";
-      flex: none;
-      width: 14px;
-      height: 14px;
-      margin-top: 6px;
-      background: var(--red);
-      clip-path: polygon(0 0, 100% 0, 100% 100%);
-      transition: transform 240ms var(--ease-out);
-    }
-    .card[open] .card__q::after { transform: rotate(90deg); }
-    .card:not([open]) summary:hover .card__q { text-decoration: underline; text-underline-offset: 5px; }
-    .card__a { padding-top: 14px; max-width: 54ch; font-size: var(--t-body); color: var(--co); }
-    .card[open] .card__a { animation: rise 360ms var(--ease-out); }
-    .card__a a { font-weight: 600; }
-    .card:nth-child(1) { --k: 0; }
-    .card:nth-child(2) { --k: 1; margin-top: 40px; }
-    .card:nth-child(3) { --k: 2; margin-top: 40px; }
-    .card:nth-child(4) { --k: 3; margin-top: 40px; }
-    .card:nth-child(5) { --k: 2; margin-top: 40px; }
-    .card:nth-child(6) { --k: 1; margin-top: 40px; }
-
-    /* ---------- Footer: the name, built from blocks ---------- */
-    .footer { background: var(--blue); color: #ffffff; padding-top: clamp(48px, 5vw, 72px); padding-bottom: 32px; }
-    .blocks {
-      display: flex;
-      align-items: flex-end;
-      gap: 4px;
-      height: 34svh;
-      min-height: 220px;
-    }
-    .blocks span {
-      flex: 1;
-      position: relative;
-      display: flex;
-      align-items: flex-end;
-      justify-content: center;
-      height: var(--h);
-      background: var(--bc);
-      color: var(--blue);
-      font-size: var(--t-display);
-      font-weight: 600;
-      line-height: .78;
-      letter-spacing: -0.03em;
+      background: linear-gradient(160deg, var(--brand) 0%, var(--brand-dark) 100%);
+      color: var(--on-brand);
+      border-radius: 28px;
+      padding: 56px 40px 0;
+      display: grid; grid-template-columns: 1.1fr .9fr; gap: 32px; align-items: end;
       overflow: hidden;
     }
-    .blocks b { display: block; font-weight: 600; }
-    .blocks span:nth-child(1) { --h: 100%; --bc: var(--paper); }
-    .blocks span:nth-child(2) { --h: 72%; --bc: var(--mist); }
-    .blocks span:nth-child(3) { --h: 90%; --bc: var(--paper); }
-    .blocks span:nth-child(4) { --h: 100%; --bc: var(--navy); color: var(--blue); }
-    .blocks span:nth-child(5) { --h: 64%; --bc: var(--mist); }
-    .blocks span:nth-child(6) { --h: 84%; --bc: var(--paper); }
-    .blocks span:nth-child(7) { --h: 60%; --bc: var(--mist); }
-    .blocks span:nth-child(8) { --h: 92%; --bc: var(--paper); --fold: clamp(20px, 3vw, 48px); }
+    .hero h1 { font-size: clamp(34px, 5vw, 54px); line-height: 1.08; margin: 0 0 18px; letter-spacing: -0.02em; }
+    .hero p.lead { font-size: 20px; color: var(--on-brand-muted); margin: 0 0 28px; max-width: 34em; }
+    .hero .ctas { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 18px; }
+    .hero .fine { font-size: 14px; color: var(--on-brand-muted); margin: 0 0 56px; }
+    .hero .shot { align-self: end; justify-self: center; width: min(300px, 100%); }
+    .hero .shot img { border-radius: 24px 24px 0 0; box-shadow: 0 20px 60px rgba(0, 0, 0, .35); }
 
-    .footer__cols {
-      display: grid;
-      grid-template-columns: repeat(12, minmax(0, 1fr));
-      gap: var(--gap);
-      margin-top: 56px;
-      font-size: var(--t-small);
+    section { padding: 72px 0 0; }
+    h2 { font-size: clamp(26px, 3.4vw, 36px); line-height: 1.15; margin: 0 0 12px; letter-spacing: -0.01em; }
+    .sub { color: var(--muted); margin: 0 0 32px; max-width: 40em; }
+
+    .features { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .feature {
+      background: var(--surface); border: 1px solid var(--line); border-radius: 18px; padding: 22px;
     }
-    .footer__cols h2 { font-size: var(--t-small); font-weight: 700; margin-bottom: 10px; }
-    .footer__cols ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 2px; }
-    .footer__cols a { display: inline-flex; min-height: 32px; align-items: center; text-decoration: none; }
-    .footer__cols a:hover { text-decoration: underline; text-underline-offset: 4px; }
-    .footer__col { grid-column: span 2; }
-    .footer__contact { grid-column: 9 / 13; display: grid; gap: 14px; align-content: start; }
-    .pcn { display: inline-flex; align-items: center; gap: 14px; text-decoration: none; }
-    .pcn img { width: 132px; height: auto; background: #ffffff; padding: 6px 8px; }
-    .footer__last {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-      margin-top: 64px;
-      font-size: var(--t-small);
+    .feature h3 { margin: 0 0 6px; font-size: 18px; }
+    .feature p { margin: 0; color: var(--muted); font-size: 16px; }
+    .feature .ic {
+      width: 40px; height: 40px; border-radius: 12px; margin-bottom: 14px;
+      display: grid; place-items: center; background: color-mix(in srgb, var(--brand) 14%, transparent); color: var(--brand);
     }
+    .feature .ic svg { width: 22px; height: 22px; }
 
-    /* ---------- Motion ---------- */
-    @keyframes rise { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+    .shots { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .shots img { border-radius: 18px; border: 1px solid var(--line); }
 
-    @media (prefers-reduced-motion: no-preference) {
-      .js .hero h1, .js .hero__sub, .js .folder, .js .front {
-        animation: arrive 900ms var(--ease-out) both;
-      }
-      .js .hero h1 { animation-name: lift; animation-duration: 1000ms; }
-      .js .hero__sub { animation-delay: 120ms; }
-      .js .f-questions { animation-delay: 200ms; }
-      .js .f-price { animation-delay: 270ms; }
-      .js .f-ilpost { animation-delay: 340ms; }
-      .js .f-new { animation-delay: 410ms; }
-      .js .front { animation-delay: 480ms; }
-
-      .js [data-reveal] { opacity: 0; transform: translateY(24px); transition: opacity 800ms var(--ease-out), transform 900ms var(--ease-out); transition-delay: calc(var(--d, 0) * 80ms); }
-      .js [data-reveal].is-in { opacity: 1; transform: none; }
-      .js .blocks[data-reveal] { opacity: 1; transform: none; }
-      .js .blocks b { transform: translateY(60%); transition: transform 1000ms var(--ease-out); }
-      .js .blocks.is-in b { transform: none; }
-      .js .blocks.is-in span:nth-child(2) b { transition-delay: 60ms; }
-      .js .blocks.is-in span:nth-child(3) b { transition-delay: 120ms; }
-      .js .blocks.is-in span:nth-child(4) b { transition-delay: 180ms; }
-      .js .blocks.is-in span:nth-child(5) b { transition-delay: 240ms; }
-      .js .blocks.is-in span:nth-child(6) b { transition-delay: 300ms; }
-      .js .blocks.is-in span:nth-child(7) b { transition-delay: 360ms; }
-      .js .blocks.is-in span:nth-child(8) b { transition-delay: 420ms; }
-
-      .live-cover { animation: breathe 9s ease-in-out infinite alternate; }
+    .podcasters {
+      background: var(--surface); border: 1px solid var(--line); border-radius: 24px; padding: 36px;
+      display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 32px;
     }
-    @keyframes arrive { from { opacity: 0; transform: translateY(48px); } to { opacity: 1; transform: none; } }
-    @keyframes lift { from { opacity: 0; transform: translateY(40px); clip-path: inset(0 0 100% 0); } to { opacity: 1; transform: none; clip-path: inset(0 0 -10% 0); } }
-    @keyframes breathe { from { transform: scale(1); } to { transform: scale(1.04); } }
-
-    @media (prefers-reduced-motion: reduce) {
-      html { scroll-behavior: auto; }
-      *, *::before, *::after { transition-duration: 1ms !important; animation-duration: 1ms !important; animation-iteration-count: 1 !important; }
+    .podcasters ol { padding-left: 20px; margin: 0; color: var(--muted); }
+    .podcasters li { margin-bottom: 6px; }
+    label { font-weight: 600; display: block; margin-bottom: 8px; }
+    input[type=url] {
+      width: 100%; min-height: 48px; padding: 0 14px; border-radius: 12px;
+      border: 1px solid var(--line); background: var(--bg); color: var(--text); font: inherit;
     }
-
-    /* ---------- Tablet ---------- */
-    @media (max-width: 1080px) {
-      .front__grid { grid-template-columns: 1fr; }
-      .front__grid { gap: 0; }
-      .front__copy, .front__side { display: contents; }
-      .front h2 { order: 0; margin-bottom: 24px; }
-      .front__actions { order: 1; margin-bottom: 28px; }
-      .front__lead { order: 2; margin-top: 0; }
-      .finder { order: 3; margin-top: 40px; }
-      .front__picture { order: 4; margin-top: 56px; justify-content: flex-start; }
-      .inside__grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
-      .fact { grid-column: 1 / -1; padding-bottom: 0; max-width: 46ch; }
-      .new__more > div { grid-column: 5 / 13; }
-      .questions h2, .drawer { grid-column: 1 / -1; }
-      .tab { width: clamp(140px, 19%, 260px); font-size: 16px; padding-left: 16px; }
-
-      .ilpost__grid { display: flex; flex-direction: column; align-items: stretch; gap: 12px; }
-      .ilpost__head { margin-bottom: 24px; }
-      .tile--1 { height: 34vw; min-height: 220px; }
-      .tile--2 { height: 46vw; min-height: 300px; order: 3; }
-      .tile--3 { height: 62vw; min-height: 400px; order: 5; }
-      .stage-text--1 { order: 2; margin-bottom: 28px; }
-      .stage-text--2 { order: 4; margin-bottom: 28px; }
-      .stage-text--3 { order: 6; }
+    input[type=url]:focus { outline: 3px solid color-mix(in srgb, var(--brand) 40%, transparent); border-color: var(--brand); }
+    .error { color: var(--accent); font-size: 15px; min-height: 1.4em; margin: 6px 0 0; }
+    .result { margin-top: 18px; display: none; }
+    .result.show { display: block; }
+    .result .row { display: flex; gap: 8px; align-items: center; margin: 8px 0 16px; }
+    .result code {
+      flex: 1; min-width: 0; overflow-x: auto; white-space: nowrap;
+      padding: 10px 12px; border-radius: 10px; background: var(--bg); border: 1px solid var(--line); font-size: 14px;
     }
+    .preview { margin: 4px 0 16px; }
 
-    /* ---------- Phone: its own composition ---------- */
-    @media (max-width: 720px) {
-      :root { --margin: 16px; --section: 96px; }
+    .faq details {
+      background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 4px 20px; margin-bottom: 10px;
+    }
+    .faq summary { cursor: pointer; font-weight: 600; padding: 14px 0; }
+    .faq details p { margin: 0 0 16px; color: var(--muted); }
 
-      .topbar { grid-template-columns: auto 1fr auto; gap: 8px; padding-top: 12px; }
-      .wordmark { justify-self: center; font-size: 16px; }
-      .wordmark svg { width: 26px; height: 26px; }
-      .topbar__link { font-size: 14px; }
+    footer { padding: 72px 0 40px; color: var(--muted); font-size: 15px; }
+    footer .wrap { display: flex; flex-wrap: wrap; gap: 8px 24px; justify-content: space-between; border-top: 1px solid var(--line); padding-top: 24px; }
 
-      .hero { --stack-top: 48svh; --tab-h: 32px; --step: 52px; min-height: 600px; }
-      .hero h1 { padding-top: 64px; font-size: 17vw; }
-      .hero__sub { font-size: var(--t-body); margin-top: 20px; padding-inline: var(--margin); }
-      .folder { left: var(--margin); right: var(--margin); }
-      .tab { width: 34%; font-size: 15px; padding: 0 28px 0 12px; }
-      .f-questions { --x: 66%; }
-      .f-price { --x: 33%; }
-      .f-ilpost { --x: 0%; }
-      .f-new { --x: 50%; }
-
-      .front { --tab-h: 32px; padding: 28px 20px 48px; }
-      .front__actions .btn { width: 100%; }
-      .front h2 { padding-right: 48px; }
-      .finder .btn { padding: 0 18px; }
-      .front__picture .shot { width: 100%; }
-
-      .statement { font-size: 24px; line-height: 1.38; }
-      .slot { padding: 0 .3em; }
-      .slot span { font-size: 13px; }
-      .new__more { margin-top: 48px; }
-      .new__more > div { grid-column: 1 / -1; }
-
-      .inside__grid { display: flex; flex-direction: column; align-items: stretch; min-height: 0; gap: 24px; }
-      .stage { order: 1; height: auto; padding-top: 24px; margin-top: 0; align-self: stretch; }
-      .index, .fact { align-self: stretch; }
-      .stage__screens { position: relative; bottom: auto; width: 100%; }
-      .stage__sheet { inset: 0 0 0 0; }
-      .stage__screens > .shot { width: 82%; height: 128vw; max-height: 560px; margin-bottom: 24px; }
-      .index { order: 0; }
-      .index ul { display: flex; flex-wrap: wrap; gap: 4px 24px; }
-      .index button { font-size: var(--t-statement); white-space: nowrap; }
-      .fact { order: 3; }
-
-      .stage-text h3 { font-size: 20px; }
-
-      .plans { display: block; }
-      .plan { display: block; }
-      .plan__name { font-size: var(--t-head); }
-      .plan__stage { padding: 12px 0 32px; }
-      .plan__stage[hidden] { display: none; }
-      .figure strong { font-size: 17vw; }
-      .plan__stage .btn { width: 100%; }
-
-      .questions h2 { margin-bottom: 72px; }
-      .card { padding: 0 20px 36px; }
-      .card__tab { width: auto; min-width: 132px; white-space: nowrap; left: calc(var(--k) * 48px); padding: 0 32px 0 16px; font-size: 15px; height: 34px; clip-path: polygon(0 0, calc(100% - 34px) 0, 100% 100%, 0 100%); }
-      .card + .card { margin-top: 34px; }
-      .card__q { font-size: var(--t-body); }
-
-      .blocks { height: 22svh; min-height: 150px; gap: 3px; }
-      .blocks span { font-size: 11vw; }
-      .footer__cols { grid-template-columns: 1fr 1fr; row-gap: 32px; }
-      .footer__col { grid-column: span 1; }
-      .footer__contact { grid-column: 1 / -1; }
+    @media (max-width: 820px) {
+      .hero { grid-template-columns: 1fr; padding: 40px 24px 0; }
+      .hero .fine { margin-bottom: 8px; }
+      .features { grid-template-columns: 1fr 1fr; }
+      .podcasters { grid-template-columns: 1fr; padding: 24px; }
+    }
+    @media (max-width: 560px) {
+      .wrap { padding: 0 16px; }
+      .features, .shots { grid-template-columns: 1fr; }
+      .shots img { max-width: 360px; margin: 0 auto; }
+      .hero .ctas .btn { width: 100%; }
+      header.top .btn { display: none; }
     }
   </style>
 </head>
 <body>
-  <a class="skip" href="#listen" data-i18n="skip">Skip to content</a>
-
-  <div class="desk">
-    <header class="topbar">
-      <div class="lang" role="group" aria-label="Language">
-        <button type="button" data-lang="en" aria-pressed="true">EN</button>
-        <button type="button" data-lang="it" aria-pressed="false">IT</button>
-      </div>
-      <a class="wordmark" href="#top" aria-label="PodFolio">
-        <svg viewBox="0 0 1024 1024" aria-hidden="true">
-          <g transform="translate(225 188)">
-            <path d="M68 0h95v648h-26c-76 0-137-61-137-137V137C0 61 61 0 137 0h-69Z" fill="#0a2c4e"/>
-            <path d="M93 0h352l129 129v519H93V0Z" fill="#ffffff"/>
-            <path d="M444 0h130v130L444 0Z" fill="#d63d2d"/>
-            <rect x="134" y="218" width="55" height="187" rx="27.5" fill="#0078d7"/>
-            <rect x="230" y="144" width="55" height="335" rx="27.5" fill="#0078d7"/>
-            <rect x="326" y="257" width="55" height="148" rx="27.5" fill="#0078d7"/>
-          </g>
-        </svg>
-        <span>PodFolio</span>
-      </a>
-      <a class="topbar__link" href="https://app.podfolio.pcngroup.ch"><span data-i18n="cta_webapp">Open the web app</span></a>
+  <div class="wrap">
+    <header class="top">
+      <a class="logo" href="./"><img src="img/icon-512.png" alt="" width="36" height="36">PodFolio</a>
+      <a class="btn btn-brand btn-small" data-link="app" href="#">Apri nel browser</a>
     </header>
 
-    <main id="top">
-      <section class="hero" aria-labelledby="hero-title">
-        <h1 id="hero-title">PodFolio</h1>
-        <p class="hero__sub" data-i18n="hero_sub">An ad-free podcast player for Android and your browser. Try it for 14 days, then pay CHF 3.99 once. No subscription.</p>
-
-        <nav class="stack" aria-label="Sections">
-          <a class="folder f-questions" href="#questions"><span class="tab" data-i18n="tab_questions">Questions</span></a>
-          <a class="folder f-price" href="#price"><span class="tab" data-i18n="tab_price">Price</span></a>
-          <a class="folder f-ilpost" href="#il-post"><span class="tab">Il Post</span></a>
-          <a class="folder f-new" href="#new"><span class="tab" data-i18n="tab_new">What's new</span></a>
-        </nav>
-      </section>
-
-      <section class="front folio" id="listen" aria-labelledby="listen-title">
-        <span class="tab" aria-hidden="true"></span>
-        <div class="front__grid">
-          <div class="front__copy">
-            <h2 id="listen-title" data-i18n="listen_title">Listen in your browser</h2>
-            <p class="front__lead" data-i18n="listen_lead">The web app plays your podcasts with nothing to install. Sign in with Google and it shares your library, queue and progress with the Android app.</p>
-
-            <form class="finder" id="finder" role="search" hidden>
-              <label for="finder-q" data-i18n="finder_label">Find a show and open it right away</label>
-              <div class="finder__row">
-                <input id="finder-q" name="q" type="search" autocomplete="off" enterkeyhint="search" placeholder="Show name or Spotify link" data-i18n-placeholder="finder_placeholder" required>
-                <button class="btn" type="submit" data-i18n="finder_button">Search</button>
-              </div>
-              <p class="finder__status" id="finder-status" role="status" aria-live="polite"></p>
-              <ul class="results" id="finder-results"></ul>
-            </form>
-          </div>
-
-          <div class="front__side">
-            <div class="front__actions">
-              <a class="btn" href="https://app.podfolio.pcngroup.ch" data-i18n="cta_webapp">Open the web app</a>
-              <a class="btn btn--dark" href="https://play.google.com/store/apps/details?id=ch.pcngroup.podfolio&amp;referrer=utm_source%3Dsite%26utm_medium%3Dorganic%26utm_campaign%3Dilpost_it" target="_blank" rel="noopener" data-i18n="cta_play">Get it on Google Play</a>
-            </div>
-          <div class="front__picture" data-reveal style="--d:2">
-            <figure class="shot folio"><img src="screens/show.webp" width="824" height="1784" alt="The PodFolio web app showing Radiolab: artwork, subscribe and share buttons, and its latest episodes" loading="lazy" decoding="async"></figure>
-          </div>
-          </div>
+    <div class="hero">
+      <div>
+        <h1>I tuoi podcast, in un'app senza pubblicità.</h1>
+        <p class="lead">Niente abbonamento: provi tutto gratis per 14 giorni, poi paghi CHF 3.99 una volta sola. Su Android e direttamente nel browser, quindi anche su iPhone e computer.</p>
+        <div class="ctas">
+          <a class="btn btn-light" data-link="app" href="#">Ascolta subito nel browser</a>
+          <a class="btn btn-ghost" data-link="play" href="#">Scarica su Google Play</a>
+          <a class="btn btn-ghost" data-link="appstore" href="#" hidden>Scarica su App Store</a>
         </div>
-      </section>
-    </main>
+        <p class="fine">Nel browser non serve installare nulla.</p>
+      </div>
+      <div class="shot"><img src="screens/player.webp" alt="Il lettore di PodFolio con velocità, timer e coda" width="824" height="1600"></div>
+    </div>
+
+    <section aria-labelledby="perche">
+      <h2 id="perche">Tutto quello che serve, niente di più</h2>
+      <p class="sub">PodFolio fa una cosa sola, e la fa bene: ti lascia ascoltare.</p>
+      <div class="features">
+        <div class="feature">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M5.6 5.6l12.8 12.8"/></svg></div>
+          <h3>Zero pubblicità nell'app</h3>
+          <p>Niente banner, niente video, niente annunci tra un episodio e l'altro.</p>
+        </div>
+        <div class="feature">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="18" height="13" rx="2"/><path d="M3 10h18M7 15h3"/></svg></div>
+          <h3>Paghi una volta</h3>
+          <p>14 giorni di prova gratuita, poi CHF 3.99 una volta sola. Nessun canone mensile.</p>
+        </div>
+        <div class="feature">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg></div>
+          <h3>Ascolto offline</h3>
+          <p>Scarica gli episodi e ascoltali in metro, in aereo o in montagna.</p>
+        </div>
+        <div class="feature">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12a8 8 0 0 1-14 5.3M4 12a8 8 0 0 1 14-5.3"/><path d="M18 3v4h-4M6 21v-4h4"/></svg></div>
+          <h3>Sempre sincronizzato</h3>
+          <p>Iscrizioni, progressi e coda allineati tra l'app Android e il browser.</p>
+        </div>
+        <div class="feature">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.6 13.5l6.8 4M15.4 6.5l-6.8 4"/></svg></div>
+          <h3>Condividi un momento</h3>
+          <p>Manda un episodio da un minuto preciso: chi lo riceve lo ascolta subito nel browser.</p>
+        </div>
+        <div class="feature">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16M4 12h10M4 18h7"/><path d="M17 15l3 3-3 3"/></svg></div>
+          <h3>Coda, velocità, timer</h3>
+          <p>Riordina la coda, regola la velocità, imposta il timer. E Chromecast su Android.</p>
+        </div>
+      </div>
+    </section>
+
+    <section aria-labelledby="come">
+      <h2 id="come">Com'è fatta</h2>
+      <p class="sub">Pulita, veloce, e con i tuoi podcast al centro.</p>
+      <div class="shots">
+        <img src="img/01_no_ads.jpg" alt="Pagina di un podcast con elenco degli episodi" width="540" height="960" loading="lazy">
+        <img src="img/02_player.jpg" alt="Il lettore con controlli di riproduzione" width="540" height="960" loading="lazy">
+        <img src="img/03_library.jpg" alt="La libreria con i tuoi podcast e gli episodi recenti" width="540" height="960" loading="lazy">
+      </div>
+    </section>
+
+    <section aria-labelledby="podcaster" id="podcaster">
+      <h2 id="podcaster-title">Hai un podcast?</h2>
+      <p class="sub">Aggiungi un pulsante “Ascolta su PodFolio” al tuo sito o alla newsletter. Chi lo clicca ascolta il tuo podcast nel browser, senza installare nulla.</p>
+      <div class="podcasters">
+        <div>
+          <ol>
+            <li>Incolla l'indirizzo del feed RSS del tuo podcast.</li>
+            <li>Copia il link, oppure il codice HTML del pulsante.</li>
+            <li>Mettilo dove vuoi: sito, newsletter, bio, descrizione degli episodi.</li>
+          </ol>
+          <p class="sub" style="margin-top:16px">Il feed RSS lo trovi nel pannello della tua piattaforma di hosting (Spreaker, Podbean, Anchor/Spotify for Creators, Libsyn…).</p>
+        </div>
+        <form id="badge-form" novalidate>
+          <label for="feed">Feed RSS del podcast</label>
+          <input id="feed" type="url" inputmode="url" placeholder="https://esempio.it/feed.xml" autocomplete="off" required>
+          <p class="error" id="feed-error" role="alert"></p>
+          <button class="btn btn-brand" type="submit">Crea il link</button>
+          <div class="result" id="result" aria-live="polite">
+            <div class="preview"><a id="preview-link" href="#" target="_blank" rel="noopener"><img id="preview-badge" src="badge.svg" alt="Ascolta su PodFolio" width="216" height="56"></a></div>
+            <label for="out-link">Link</label>
+            <div class="row"><code id="out-link"></code><button class="btn btn-brand btn-small" type="button" data-copy="out-link">Copia</button></div>
+            <label for="out-html">Codice HTML del pulsante</label>
+            <div class="row"><code id="out-html"></code><button class="btn btn-brand btn-small" type="button" data-copy="out-html">Copia</button></div>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <section aria-labelledby="faq" class="faq">
+      <h2 id="faq">Domande frequenti</h2>
+      <details>
+        <summary>Davvero niente pubblicità?</summary>
+        <p>PodFolio non mostra nessuna pubblicità. Alcuni autori però leggono annunci dentro i propri episodi: quelli fanno parte dell'audio e restano, come in qualsiasi app per podcast.</p>
+      </details>
+      <details>
+        <summary>Quanto costa?</summary>
+        <p>Per 14 giorni puoi usare tutto gratis, senza carta di credito. Poi sblocchi PodFolio Premium con un unico acquisto da CHF 3.99 (o l'equivalente nella tua valuta): nessun abbonamento, nessun rinnovo. Finché non lo acquisti l'app resta bloccata, ma libreria e download restano sul dispositivo.</p>
+      </details>
+      <details>
+        <summary>Su quali dispositivi funziona?</summary>
+        <p>Su Android, da Google Play, e in qualsiasi browser moderno su <a data-link="app" href="https://app.podfolio.pcngroup.ch">app.podfolio.pcngroup.ch</a>: così funziona anche su iPhone, iPad e computer. Accedendo con Google ritrovi iscrizioni, progressi e coda ovunque.</p>
+      </details>
+      <details>
+        <summary>Devo pagare di nuovo per la versione web?</summary>
+        <p>No. Premium si acquista una volta nell'app Android e resta legato al tuo account Google: accedi con lo stesso account nella versione web e lo trovi già sbloccato.</p>
+      </details>
+      <details>
+        <summary>Posso portare i podcast dalla mia app attuale?</summary>
+        <p>Sì: esporta le iscrizioni in un file OPML dalla tua app attuale e importalo nelle impostazioni di PodFolio. Puoi anche incollare in Cerca il link di un podcast su Spotify. E puoi esportare le tue iscrizioni quando vuoi.</p>
+      </details>
+      <details>
+        <summary>Che dati raccogliete?</summary>
+        <p>Solo quelli che servono a far funzionare l'app, e non li vendiamo. I dettagli sono nell'<a href="privacy-policy.html">informativa sulla privacy</a>.</p>
+      </details>
+    </section>
   </div>
 
-  <section class="new" id="new" aria-labelledby="new-title">
+  <footer>
     <div class="wrap">
-      <h2 id="new-title" data-reveal data-i18n="new_title">What's new</h2>
-      <p class="statement" data-reveal style="--d:1" data-i18n-html="new_statement">Line up what's next in the queue <span class="slot" aria-hidden="true"><span>+ Coda</span></span>, jump straight to a chapter <span class="slot" aria-hidden="true"><span>12:40</span></span>, read a brief before you press play <span class="slot" aria-hidden="true"><span>Brief</span></span> and share the exact minute <span class="slot slot--red" aria-hidden="true"><span><span class="tri"></span>14:21</span></span>.</p>
-      <div class="new__more">
-        <div data-reveal style="--d:2">
-          <p data-i18n="new_more">Also new: Chromecast, Spotify show links in search, and a quick way to delete downloads you have finished.</p>
-          <a class="text-link" href="#inside" data-i18n="new_link">See the app</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="inside" id="inside" aria-labelledby="inside-title">
-    <div class="wrap">
-      <h2 class="section-title inside__title" id="inside-title" data-reveal data-i18n="inside_title">Inside the app</h2>
-    </div>
-    <div class="wrap inside__grid">
-      <div class="index" data-reveal>
-        <ul role="tablist" aria-labelledby="inside-title">
-          <li><button type="button" role="tab" id="t-library" aria-controls="p-library" aria-selected="true" data-sheet="#0078d7" data-i18n="inside_library">Library</button></li>
-          <li><button type="button" role="tab" id="t-show" aria-controls="p-show" aria-selected="false" tabindex="-1" data-sheet="#244e8a" data-i18n="inside_show">Show pages</button></li>
-          <li><button type="button" role="tab" id="t-player" aria-controls="p-player" aria-selected="false" tabindex="-1" data-sheet="#0a2c4e" data-i18n="inside_player">Player</button></li>
-          <li><button type="button" role="tab" id="t-settings" aria-controls="p-settings" aria-selected="false" tabindex="-1" data-sheet="#dce8f5" data-i18n="inside_settings">Settings</button></li>
-        </ul>
-      </div>
-
-      <div class="stage" data-reveal style="--d:1">
-        <div class="stage__sheet folio" id="stage-sheet"></div>
-        <div class="stage__screens">
-          <figure class="shot folio" id="p-library" role="tabpanel" aria-labelledby="t-library"><img src="screens/library.webp" width="824" height="1784" alt="Library: subscribed shows and recent episodes" loading="lazy" decoding="async"></figure>
-          <figure class="shot folio" id="p-show" role="tabpanel" aria-labelledby="t-show" hidden><img src="screens/show.webp" width="824" height="1784" alt="Show page for Radiolab, with its episodes, subscribe button and share button" loading="lazy" decoding="async"></figure>
-          <figure class="shot folio" id="p-player" role="tabpanel" aria-labelledby="t-player" hidden><img src="screens/player.webp" width="824" height="1600" alt="Full player playing an episode of 99% Invisible, with skip, speed, sleep timer, queue and share controls" loading="lazy" decoding="async"></figure>
-          <figure class="shot folio" id="p-settings" role="tabpanel" aria-labelledby="t-settings" hidden><img src="screens/settings.webp" width="824" height="1784" alt="Settings: Google sign-in for sync, Il Post subscriber sign-in, OPML import and export" loading="lazy" decoding="async"></figure>
-        </div>
-      </div>
-
-      <div class="fact" data-reveal style="--d:2" aria-live="polite">
-        <p data-for="t-library" data-i18n="fact_library">Your shows and their newest episodes on one screen, ready to play.</p>
-        <p data-for="t-show" data-i18n="fact_show" hidden>Every show has its own page with episodes to stream or download, and a share link that opens in the web app.</p>
-        <p data-for="t-player" data-i18n="fact_player" hidden>Skip back 10 or forward 30 seconds, change speed, set a sleep timer, open the queue or share, all from one screen.</p>
-        <p data-for="t-settings" data-i18n="fact_settings" hidden>Sign in with Google to sync, connect your Il Post subscription, and import or export OPML.</p>
-      </div>
-    </div>
-  </section>
-
-  <section class="ilpost on-dark" id="il-post" aria-labelledby="ilpost-title">
-    <div class="wrap ilpost__grid">
-      <div class="ilpost__head" data-reveal>
-        <h2 class="section-title" id="ilpost-title" data-i18n="ilpost_title">For Il Post subscribers</h2>
-        <p data-i18n-html="ilpost_lead">Your subscriber podcasts sit in the same library as everything else, <strong>with downloads, sync and the queue</strong>.</p>
-      </div>
-
-      <div class="tile tile--1 folio" data-reveal>
-        <figure class="shot"><img src="screens/settings-ilpost.webp" width="824" height="1120" alt="Settings, with the Il Post subscriber sign-in" loading="lazy" decoding="async"></figure>
-      </div>
-      <div class="tile tile--2 folio" data-reveal style="--d:1">
-        <div class="screen" data-ui role="img" aria-label="Signed in to Il Post; the podcast slug morning is typed into the field, ready to add">
-          <div class="s-bar" style="font-size:17px">Il Post</div>
-          <div class="s-pad">
-            <div class="s-card" style="display:flex;align-items:center;gap:10px;margin-bottom:16px"><span class="chip" style="background:#dcf1e3;width:30px;padding:0;justify-content:center"><span style="width:7px;height:12px;border:solid #1d6b3c;border-width:0 2px 2px 0;transform:rotate(45deg);margin-top:-3px"></span></span><b style="font-size:14px">Accesso effettuato</b></div>
-            <p style="font-size:13px;color:#5a6470;margin-bottom:10px">ilpost.it/podcasts/<b style="color:#191c1d">morning</b>/</p>
-            <div class="field" style="border:2px solid #0063b1"><small>Slug podcast</small><span>morning</span></div>
-            <span class="s-btn">+ Aggiungi</span>
-          </div>
-        </div>
-      </div>
-      <div class="tile tile--3 folio" data-reveal style="--d:2">
-        <figure class="shot"><img src="screens/library.webp" width="824" height="1784" alt="Library with subscribed shows and their recent episodes" loading="lazy" decoding="async"></figure>
-      </div>
-
-      <div class="stage-text stage-text--1" data-reveal>
-        <h3 data-i18n="il_1_t">Sign in</h3>
-        <p data-i18n="il_1_b">In Settings, with the email and password of your abbonati.ilpost.it account.</p>
-      </div>
-      <div class="stage-text stage-text--2" data-reveal style="--d:1">
-        <h3 data-i18n="il_2_t">Add the show</h3>
-        <p data-i18n="il_2_b">Paste the end of its address, the part after ilpost.it/podcasts/.</p>
-      </div>
-      <div class="stage-text stage-text--3" data-reveal style="--d:2">
-        <h3 data-i18n="il_3_t">Listen as usual</h3>
-        <p data-i18n="il_3_b">New episodes arrive with a notification and download like any other show.</p>
-      </div>
-    </div>
-  </section>
-
-  <section class="price on-dark" id="price" aria-labelledby="price-title">
-    <div class="wrap plans" data-reveal>
-      <h2 class="section-title" id="price-title" data-i18n="price_title">Pay once</h2>
-
-      <div class="plan">
-        <button class="plan__name" type="button" id="plan-trial" aria-expanded="false" aria-controls="stage-trial" data-i18n="plan_trial">Trial</button>
-        <div class="plan__stage" id="stage-trial" role="region" aria-labelledby="plan-trial" hidden>
-          <div class="figure"><strong>CHF 0</strong><span data-i18n="trial_period">for 14 days</span></div>
-          <p data-i18n="trial_body">Every feature from the first day: downloads, sync, the queue, chapters and Il Post. No card needed.</p>
-          <a class="btn btn--light" href="https://play.google.com/store/apps/details?id=ch.pcngroup.podfolio&amp;referrer=utm_source%3Dsite%26utm_medium%3Dorganic%26utm_campaign%3Dilpost_it" target="_blank" rel="noopener" data-i18n="trial_cta">Start the trial on Google Play</a>
-        </div>
-      </div>
-
-      <div class="plan">
-        <button class="plan__name" type="button" id="plan-premium" aria-expanded="true" aria-controls="stage-premium">Premium</button>
-        <div class="plan__stage" id="stage-premium" role="region" aria-labelledby="plan-premium">
-          <div class="figure"><strong>CHF 3.99</strong><span data-i18n="premium_period">once, no subscription</span></div>
-          <p data-i18n="premium_body">Unlimited offline downloads, sync across devices, Il Post subscriber podcasts and variable playback speed. Bought in the Android app, unlocked on the web with the same Google account.</p>
-          <a class="btn btn--light" href="https://play.google.com/store/apps/details?id=ch.pcngroup.podfolio&amp;referrer=utm_source%3Dsite%26utm_medium%3Dorganic%26utm_campaign%3Dilpost_it" target="_blank" rel="noopener" data-i18n="premium_cta">Get Premium on Google Play</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="questions on-dark" id="questions" aria-labelledby="questions-title">
-    <div class="wrap questions__inner">
-      <h2 class="section-title" id="questions-title" data-reveal data-i18n="questions_title">Questions</h2>
-      <div class="drawer" data-reveal style="--d:1">
-        <details class="card" name="faq" open>
-          <summary><span class="card__tab" data-i18n="q1_tab">Platforms</span><span class="card__q" data-i18n="q1_q">Where can I use PodFolio?</span></summary>
-          <p class="card__a" data-i18n-html="q1_a">On Android, from Google Play, and in any modern browser at <a href="https://app.podfolio.pcngroup.ch">app.podfolio.pcngroup.ch</a>. On an iPhone, an iPad or a computer, use the web app.</p>
-        </details>
-        <details class="card" name="faq">
-          <summary><span class="card__tab" data-i18n="q2_tab">Web app</span><span class="card__q" data-i18n="q2_q">Do I pay again for the web app?</span></summary>
-          <p class="card__a" data-i18n="q2_a">No. Premium is bought once in the Android app and belongs to your Google account. Sign in with the same account in the web app and it is unlocked there too.</p>
-        </details>
-        <details class="card" name="faq">
-          <summary><span class="card__tab">Il Post</span><span class="card__q" data-i18n="q3_q">What happens to my Il Post password?</span></summary>
-          <p class="card__a" data-i18n="q3_a">It is used only to sign in to Il Post. In the web app the request passes through a PCN Group proxy on Cloudflare Workers, which forwards it without storing or logging it. Il Post shows are never turned into share links.</p>
-        </details>
-        <details class="card" name="faq">
-          <summary><span class="card__tab" data-i18n="q4_tab">Switching</span><span class="card__q" data-i18n="q4_q">Can I bring my podcasts with me?</span></summary>
-          <p class="card__a" data-i18n="q4_a">Yes. Import an OPML file from Settings, or paste a Spotify show link into search. You can export your subscriptions as OPML whenever you like.</p>
-        </details>
-        <details class="card" name="faq">
-          <summary><span class="card__tab" data-i18n="q5_tab">Language</span><span class="card__q" data-i18n="q5_q">Which language is the app in?</span></summary>
-          <p class="card__a" data-i18n="q5_a">Italian. Search finds podcasts in every language, and they play as their makers published them.</p>
-        </details>
-        <details class="card" name="faq">
-          <summary><span class="card__tab" data-i18n="q6_tab">After the trial</span><span class="card__q" data-i18n="q6_q">What happens after 14 days?</span></summary>
-          <p class="card__a" data-i18n="q6_a">PodFolio asks for the one-time Premium unlock, CHF 3.99. Until you buy it the app stays locked, and your library and downloads stay on the device.</p>
-        </details>
-      </div>
-    </div>
-  </section>
-
-  <footer class="footer on-dark">
-    <div class="wrap">
-      <div class="blocks" role="img" aria-label="PodFolio" data-reveal>
-        <span aria-hidden="true"><b>P</b></span><span aria-hidden="true"><b>o</b></span><span aria-hidden="true"><b>d</b></span><span aria-hidden="true"><b>F</b></span><span aria-hidden="true"><b>o</b></span><span aria-hidden="true"><b>l</b></span><span aria-hidden="true"><b>i</b></span><span class="folio" aria-hidden="true"><b>o</b></span>
-      </div>
-
-      <div class="footer__cols">
-        <div class="footer__col">
-          <h2>PodFolio</h2>
-          <ul>
-            <li><a href="https://app.podfolio.pcngroup.ch" data-i18n="f_webapp">Web app</a></li>
-            <li><a href="https://play.google.com/store/apps/details?id=ch.pcngroup.podfolio&amp;referrer=utm_source%3Dsite%26utm_medium%3Dorganic%26utm_campaign%3Dilpost_it" target="_blank" rel="noopener">Google Play</a></li>
-            <li><a href="#new" data-i18n="tab_new">What's new</a></li>
-            <li><a href="#il-post">Il Post</a></li>
-          </ul>
-        </div>
-        <div class="footer__col">
-          <h2 data-i18n="f_help">Help</h2>
-          <ul>
-            <li><a href="#questions" data-i18n="tab_questions">Questions</a></li>
-            <li><a href="#price" data-i18n="tab_price">Price</a></li>
-            <li><a href="privacy-policy.html" data-i18n="f_privacy">Privacy policy</a></li>
-          </ul>
-        </div>
-        <div class="footer__col">
-          <h2 data-i18n="f_contact">Contact</h2>
-          <ul>
-            <li><a href="mailto:info@pcngroup.ch?subject=PodFolio">info@pcngroup.ch</a></li>
-            <li><a href="https://www.pcngroup.ch" target="_blank" rel="noopener">pcngroup.ch</a></li>
-          </ul>
-        </div>
-        <div class="footer__contact">
-          <a class="pcn" href="https://www.pcngroup.ch" target="_blank" rel="noopener">
-            <img src="https://pcngroup.ch/wp-content/uploads/2024/05/output-onlinepngtools.png" alt="PCN Group" width="132" height="34" loading="lazy">
-          </a>
-          <p data-i18n="f_made">Made and published by PCN Group, Rigistrasse 28, 8006 Zürich.</p>
-        </div>
-      </div>
-
-      <div class="footer__last">
-        <p>&copy; <span id="year">2026</span> PCN Group</p>
-        <a class="btn btn--light btn--small" href="https://app.podfolio.pcngroup.ch" data-i18n="cta_webapp">Open the web app</a>
-      </div>
+      <span>Sviluppato e pubblicato da <a href="https://www.pcngroup.ch">PCN Group</a>, Rigistrasse 28, 8006 Zürich. © 2026 PCN Group</span>
+      <span><a href="mailto:info@pcngroup.ch?subject=PodFolio">info@pcngroup.ch</a> · <a href="privacy-policy.html">Privacy</a></span>
     </div>
   </footer>
 
   <script>
-    document.documentElement.classList.add("js");
-
-    const WEB_APP = "https://app.podfolio.pcngroup.ch";
-    const PLAY_URL = "https://play.google.com/store/apps/details?id=ch.pcngroup.podfolio&referrer=utm_source%3Dsite%26utm_medium%3Dorganic%26utm_campaign%3Dilpost_it";
-
-    const copy = {
-      en: {
-        title: "PodFolio | Ad-free podcast player for Android and the web",
-        skip: "Skip to content",
-        hero_sub: "An ad-free podcast player for Android and your browser. Try it for 14 days, then pay CHF 3.99 once. No subscription.",
-        tab_questions: "Questions",
-        tab_price: "Price",
-        tab_new: "What's new",
-        cta_webapp: "Open the web app",
-        cta_play: "Get it on Google Play",
-        listen_title: "Listen in your browser",
-        listen_lead: "The web app plays your podcasts with nothing to install. Sign in with Google and it shares your library, queue and progress with the Android app.",
-        finder_label: "Find a show and open it right away",
-        finder_placeholder: "Show name or Spotify link",
-        finder_button: "Search",
-        finder_searching: "Searching…",
-        finder_none: "No shows found for “{q}”. Try another name.",
-        finder_error: "Search is unavailable right now. Open the web app and search there.",
-        finder_count: "{n} shows found.",
-        finder_open: "Open",
-        finder_spotify: "Spotify show",
-        finder_spotify_by: "From the link you pasted",
-        finder_android: "Android app only",
-        finder_play: "Google Play",
-        new_title: "What's new",
-        new_statement: "Line up what's next in the queue <span class=\"slot\" aria-hidden=\"true\"><span>+ Coda</span></span>, jump straight to a chapter <span class=\"slot\" aria-hidden=\"true\"><span>12:40</span></span>, read a brief before you press play <span class=\"slot\" aria-hidden=\"true\"><span>Brief</span></span> and share the exact minute <span class=\"slot slot--red\" aria-hidden=\"true\"><span><span class=\"tri\"></span>14:21</span></span>.",
-        new_more: "Also new: Chromecast, Spotify show links in search, and a quick way to delete downloads you have finished.",
-        new_link: "See the app",
-        inside_title: "Inside the app",
-        inside_library: "Library",
-        inside_show: "Show pages",
-        inside_player: "Player",
-        inside_settings: "Settings",
-        fact_library: "Your shows and their newest episodes on one screen, ready to play.",
-        fact_show: "Every show has its own page with episodes to stream or download, and a share link that opens in the web app.",
-        fact_player: "Skip back 10 or forward 30 seconds, change speed, set a sleep timer, open the queue or share, all from one screen.",
-        fact_settings: "Sign in with Google to sync, connect your Il Post subscription, and import or export OPML.",
-        ilpost_title: "For Il Post subscribers",
-        ilpost_lead: "Your subscriber podcasts sit in the same library as everything else, <strong>with downloads, sync and the queue</strong>.",
-        il_1_t: "Sign in",
-        il_1_b: "In Settings, with the email and password of your abbonati.ilpost.it account.",
-        il_2_t: "Add the show",
-        il_2_b: "Paste the end of its address, the part after ilpost.it/podcasts/.",
-        il_3_t: "Listen as usual",
-        il_3_b: "New episodes arrive with a notification and download like any other show.",
-        price_title: "Pay once",
-        plan_trial: "Trial",
-        trial_period: "for 14 days",
-        trial_body: "Every feature from the first day: downloads, sync, the queue, chapters and Il Post. No card needed.",
-        trial_cta: "Start the trial on Google Play",
-        premium_period: "once, no subscription",
-        premium_body: "Unlimited offline downloads, sync across devices, Il Post subscriber podcasts and variable playback speed. Bought in the Android app, unlocked on the web with the same Google account.",
-        premium_cta: "Get Premium on Google Play",
-        questions_title: "Questions",
-        q1_tab: "Platforms",
-        q1_q: "Where can I use PodFolio?",
-        q1_a: "On Android, from Google Play, and in any modern browser at <a href=\"https://app.podfolio.pcngroup.ch\">app.podfolio.pcngroup.ch</a>. On an iPhone, an iPad or a computer, use the web app.",
-        q2_tab: "Web app",
-        q2_q: "Do I pay again for the web app?",
-        q2_a: "No. Premium is bought once in the Android app and belongs to your Google account. Sign in with the same account in the web app and it is unlocked there too.",
-        q3_q: "What happens to my Il Post password?",
-        q3_a: "It is used only to sign in to Il Post. In the web app the request passes through a PCN Group proxy on Cloudflare Workers, which forwards it without storing or logging it. Il Post shows are never turned into share links.",
-        q4_tab: "Switching",
-        q4_q: "Can I bring my podcasts with me?",
-        q4_a: "Yes. Import an OPML file from Settings, or paste a Spotify show link into search. You can export your subscriptions as OPML whenever you like.",
-        q5_tab: "Language",
-        q5_q: "Which language is the app in?",
-        q5_a: "Italian. Search finds podcasts in every language, and they play as their makers published them.",
-        q6_tab: "After the trial",
-        q6_q: "What happens after 14 days?",
-        q6_a: "PodFolio asks for the one-time Premium unlock, CHF 3.99. Until you buy it the app stays locked, and your library and downloads stay on the device.",
-        f_webapp: "Web app",
-        f_help: "Help",
-        f_privacy: "Privacy policy",
-        f_contact: "Contact",
-        f_made: "Made and published by PCN Group, Rigistrasse 28, 8006 Zürich."
-      },
-      it: {
-        title: "PodFolio | Podcast senza pubblicità per Android e browser",
-        skip: "Vai al contenuto",
-        hero_sub: "Podcast senza pubblicità, anche quelli per abbonati de Il\u00a0Post, su Android e nel browser. 14 giorni di prova, poi CHF 3.99 una volta sola.",
-        tab_questions: "Domande",
-        tab_price: "Prezzo",
-        tab_new: "Novità",
-        cta_webapp: "Apri la web app",
-        cta_play: "Scarica da Google Play",
-        listen_title: "Ascolta nel browser",
-        listen_lead: "La web app riproduce i tuoi podcast senza installare nulla. Accedi con Google e condivide libreria, coda e avanzamento con l'app Android.",
-        finder_label: "Cerca un podcast e aprilo subito",
-        finder_placeholder: "Nome del podcast o link Spotify",
-        finder_button: "Cerca",
-        finder_searching: "Ricerca in corso…",
-        finder_none: "Nessun podcast trovato per “{q}”. Prova un altro nome.",
-        finder_error: "La ricerca non è disponibile ora. Apri la web app e cerca lì.",
-        finder_count: "{n} podcast trovati.",
-        finder_open: "Apri",
-        finder_spotify: "Podcast Spotify",
-        finder_spotify_by: "Dal link che hai incollato",
-        finder_android: "solo nell'app Android",
-        finder_play: "Google Play",
-        new_title: "Le novità",
-        new_statement: "Metti in coda cosa ascoltare dopo <span class=\"slot\" aria-hidden=\"true\"><span>+ Coda</span></span>, salta al capitolo che ti serve <span class=\"slot\" aria-hidden=\"true\"><span>12:40</span></span>, leggi un brief prima di premere play <span class=\"slot\" aria-hidden=\"true\"><span>Brief</span></span> e condividi il minuto esatto <span class=\"slot slot--red\" aria-hidden=\"true\"><span><span class=\"tri\"></span>14:21</span></span>.",
-        new_more: "E ancora: Chromecast, link Spotify nella ricerca e un modo rapido per eliminare i download già ascoltati.",
-        new_link: "Guarda l'app",
-        inside_title: "Dentro l'app",
-        inside_library: "Libreria",
-        inside_show: "Pagine dei podcast",
-        inside_player: "Player",
-        inside_settings: "Impostazioni",
-        fact_library: "I tuoi podcast e i loro episodi più recenti in una sola schermata, pronti da ascoltare.",
-        fact_show: "Ogni podcast ha la sua pagina, con gli episodi da ascoltare o scaricare e un link da condividere che si apre nella web app.",
-        fact_player: "Indietro di 10 o avanti di 30 secondi, velocità, sleep timer, coda e condivisione, tutto in una schermata.",
-        fact_settings: "Accedi con Google per la sincronizzazione, collega il tuo abbonamento a Il Post e importa o esporta OPML.",
-        ilpost_title: "Per gli abbonati de Il Post",
-        ilpost_lead: "I podcast riservati agli abbonati entrano nella stessa libreria di tutto il resto, <strong>con download, sync e coda</strong>.",
-        il_1_t: "Accedi",
-        il_1_b: "Dalle Impostazioni, con email e password del tuo account abbonati.ilpost.it.",
-        il_2_t: "Aggiungi il podcast",
-        il_2_b: "Incolla la parte finale dell'indirizzo, quella dopo ilpost.it/podcasts/.",
-        il_3_t: "Ascolta come sempre",
-        il_3_b: "I nuovi episodi arrivano con una notifica e si scaricano come tutti gli altri.",
-        price_title: "Paghi una volta",
-        plan_trial: "Prova",
-        trial_period: "per 14 giorni",
-        trial_body: "Tutte le funzioni dal primo giorno: download, sync, coda, capitoli e Il Post. Nessuna carta richiesta.",
-        trial_cta: "Inizia la prova su Google Play",
-        premium_period: "una volta, senza abbonamento",
-        premium_body: "Download offline illimitati, sync tra dispositivi, podcast per abbonati de Il Post e velocità di riproduzione variabile. Si acquista nell'app Android e si sblocca anche sul web con lo stesso account Google.",
-        premium_cta: "Prendi Premium su Google Play",
-        questions_title: "Domande",
-        q1_tab: "Piattaforme",
-        q1_q: "Dove posso usare PodFolio?",
-        q1_a: "Su Android, da Google Play, e in qualsiasi browser recente su <a href=\"https://app.podfolio.pcngroup.ch\">app.podfolio.pcngroup.ch</a>. Su iPhone, iPad o computer usa la web app.",
-        q2_tab: "Web app",
-        q2_q: "Devo pagare di nuovo per la web app?",
-        q2_a: "No. Premium si acquista una volta nell'app Android ed è legato al tuo account Google. Accedi con lo stesso account nella web app ed è sbloccato anche lì.",
-        q3_q: "Che fine fa la mia password de Il Post?",
-        q3_a: "Serve solo per accedere a Il Post. Nella web app la richiesta passa da un proxy di PCN Group su Cloudflare Workers, che la inoltra senza salvarla né registrarla. I podcast de Il Post non diventano mai link condivisibili.",
-        q4_tab: "Cambiare app",
-        q4_q: "Posso portare con me i miei podcast?",
-        q4_a: "Sì. Importa un file OPML dalle Impostazioni, oppure incolla il link di un podcast Spotify nella ricerca. Puoi esportare le iscrizioni in OPML quando vuoi.",
-        q5_tab: "Lingua",
-        q5_q: "In che lingua è l'app?",
-        q5_a: "In italiano. La ricerca trova podcast in tutte le lingue, che si ascoltano come li hanno pubblicati i loro autori.",
-        q6_tab: "Dopo la prova",
-        q6_q: "Cosa succede dopo 14 giorni?",
-        q6_a: "PodFolio ti chiede lo sblocco Premium una tantum, CHF 3.99. Finché non lo acquisti l'app resta bloccata; libreria e download restano sul dispositivo.",
-        f_webapp: "Web app",
-        f_help: "Aiuto",
-        f_privacy: "Informativa privacy",
-        f_contact: "Contatti",
-        f_made: "Realizzata e pubblicata da PCN Group, Rigistrasse 28, 8006 Zurigo."
-      }
+    // Where the buttons point. Leave a link empty to hide its button.
+    const LINKS = {
+      app: 'https://app.podfolio.pcngroup.ch',
+      play: 'https://play.google.com/store/apps/details?id=ch.pcngroup.podfolio&referrer=utm_source%3Dsite%26utm_medium%3Dorganic',
+      appstore: '',
     };
 
-    let lang = "en";
-    const t = (key) => (copy[lang] && copy[lang][key]) || copy.en[key] || "";
-
-    function applyLanguage(next) {
-      lang = copy[next] ? next : "en";
-      document.documentElement.lang = lang;
-      document.title = t("title");
-      document.querySelectorAll("[data-i18n]").forEach((node) => {
-        const value = t(node.dataset.i18n);
-        if (value) node.textContent = value;
-      });
-      document.querySelectorAll("[data-i18n-html]").forEach((node) => {
-        const value = t(node.dataset.i18nHtml);
-        if (value) node.innerHTML = value;
-      });
-      document.querySelectorAll("[data-i18n-placeholder]").forEach((node) => {
-        node.placeholder = t(node.dataset.i18nPlaceholder);
-      });
-      document.querySelectorAll("[data-lang]").forEach((button) => {
-        button.setAttribute("aria-pressed", String(button.dataset.lang === lang));
-      });
-      try { localStorage.setItem("podfolio-language", lang); } catch (error) { void error; }
+    for (const el of document.querySelectorAll('[data-link]')) {
+      const url = LINKS[el.dataset.link];
+      el.hidden = !url;
+      if (url) el.href = url;
     }
 
-    document.querySelectorAll("[data-lang]").forEach((button) => {
-      button.addEventListener("click", () => applyLanguage(button.dataset.lang));
+    // Badge generator: builds the same link the app's share button makes.
+    const form = document.getElementById('badge-form');
+    const feedInput = document.getElementById('feed');
+    const errorEl = document.getElementById('feed-error');
+    const result = document.getElementById('result');
+
+    function shareLink(feed) {
+      return LINKS.app + '/#/home/open?feed=' + encodeURIComponent(feed);
+    }
+
+    function escapeHtml(s) {
+      return s.replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+    }
+
+    form.addEventListener('submit', event => {
+      event.preventDefault();
+      const feed = feedInput.value.trim();
+      let ok = false;
+      try {
+        const url = new URL(feed);
+        ok = (url.protocol === 'https:' || url.protocol === 'http:') && url.hostname.includes('.');
+      } catch (_) {}
+      if (!ok) {
+        errorEl.textContent = 'Inserisci un indirizzo completo, per esempio https://esempio.it/feed.xml';
+        result.classList.remove('show');
+        feedInput.focus();
+        return;
+      }
+      errorEl.textContent = '';
+      const link = shareLink(feed);
+      const badgeUrl = new URL('badge.svg', location.href).href;
+      const html = '<a href="' + escapeHtml(link) + '"><img src="' + escapeHtml(badgeUrl) +
+        '" alt="Ascolta su PodFolio" width="216" height="56"></a>';
+      document.getElementById('out-link').textContent = link;
+      document.getElementById('out-html').textContent = html;
+      document.getElementById('preview-link').href = link;
+      result.classList.add('show');
     });
 
-    const stored = (() => { try { return localStorage.getItem("podfolio-language"); } catch (error) { return null; } })();
-    const browserLang = (navigator.language || "").toLowerCase().startsWith("it") ? "it" : "en";
-    const asked = new URLSearchParams(location.search).get("lang");
-    applyLanguage(copy[asked] ? asked : stored || browserLang);
-
-    /* Search any show and open it in the web app */
-    (() => {
-      const form = document.getElementById("finder");
-      const input = document.getElementById("finder-q");
-      const status = document.getElementById("finder-status");
-      const list = document.getElementById("finder-results");
-      form.hidden = false;
-      let request = 0;
-
-      const openLink = (feed) => `${WEB_APP}/#/home/open?${new URLSearchParams({ feed })}`;
-
-      const row = (href, image, title, by, action) => {
-        const li = document.createElement("li");
-        const a = document.createElement("a");
-        a.href = href;
-        if (image) {
-          const img = document.createElement("img");
-          img.src = image; img.alt = ""; img.width = 64; img.height = 64; img.loading = "lazy";
-          a.append(img);
-        } else {
-          const box = document.createElement("span");
-          box.className = "cover-fallback";
-          a.append(box);
-        }
-        const text = document.createElement("span");
-        const strong = document.createElement("strong");
-        strong.textContent = title;
-        const small = document.createElement("span");
-        small.className = "by";
-        small.textContent = by;
-        text.append(strong, small);
-        const go = document.createElement("span");
-        go.className = "go";
-        go.textContent = (action || t("finder_open")) + " →";
-        if (href === PLAY_URL) { a.target = "_blank"; a.rel = "noopener"; }
-        a.append(text, go);
-        li.append(a);
-        return li;
-      };
-
-      form.addEventListener("submit", async (event) => {
-        event.preventDefault();
-        const q = input.value.trim();
-        if (!q) return;
-        const id = ++request;
-        list.replaceChildren();
-
-        const spotify = q.match(/open\.spotify\.com\/(?:[a-z-]+\/)?show\/([A-Za-z0-9]+)/) || q.match(/^spotify:show:([A-Za-z0-9]+)$/);
-        if (spotify) {
-          status.textContent = "";
-          list.append(row(openLink(`spotify:show:${spotify[1]}`), "", t("finder_spotify"), t("finder_spotify_by")));
-          return;
-        }
-
-        status.textContent = t("finder_searching");
+    for (const button of document.querySelectorAll('[data-copy]')) {
+      button.addEventListener('click', async () => {
+        const text = document.getElementById(button.dataset.copy).textContent;
         try {
-          const url = `https://itunes.apple.com/search?media=podcast&entity=podcast&limit=6&term=${encodeURIComponent(q)}`;
-          const response = await fetch(url);
-          if (!response.ok) throw new Error(String(response.status));
-          const data = await response.json();
-          if (id !== request) return;
-          const shows = (data.results || []).filter((item) => item.feedUrl);
-          if (!shows.length) {
-            status.textContent = t("finder_none").replace("{q}", q);
-            return;
-          }
-          status.textContent = t("finder_count").replace("{n}", shows.length);
-          // The web app reads feeds from the browser, so a feed that refuses
-          // cross-site requests cannot open there; send those to Google Play.
-          const webReady = await Promise.all(shows.map((item) =>
-            fetch(item.feedUrl, { method: "HEAD", signal: AbortSignal.timeout(5000) })
-              .then(() => true)
-              .catch((error) => error.name === "TimeoutError")));
-          if (id !== request) return;
-          shows.forEach((item, index) => {
-            const by = item.artistName || "";
-            const li = webReady[index]
-              ? row(openLink(item.feedUrl), item.artworkUrl100 || item.artworkUrl60, item.collectionName || item.trackName, by)
-              : row(PLAY_URL, item.artworkUrl100 || item.artworkUrl60, item.collectionName || item.trackName, `${by} · ${t("finder_android")}`, t("finder_play"));
-            li.style.animationDelay = `${index * 60}ms`;
-            list.append(li);
-          });
-        } catch (error) {
-          if (id !== request) return;
-          status.textContent = t("finder_error");
+          await navigator.clipboard.writeText(text);
+          button.textContent = 'Copiato';
+        } catch (_) {
+          button.textContent = 'Seleziona e copia';
         }
+        setTimeout(() => { button.textContent = 'Copia'; }, 2000);
       });
-    })();
-
-    /* Inside the app: one held stage, the index swaps it */
-    (() => {
-      const tabs = [...document.querySelectorAll('#inside [role="tab"]')];
-      const sheet = document.getElementById("stage-sheet");
-      const facts = [...document.querySelectorAll("#inside .fact p")];
-      const fine = matchMedia("(hover: hover) and (pointer: fine)");
-
-      const list = tabs[0].closest("ul");
-      const select = (tab, focus, quiet) => {
-        tabs.forEach((other) => {
-          const on = other === tab;
-          other.setAttribute("aria-selected", String(on));
-          other.tabIndex = on ? 0 : -1;
-          document.getElementById(other.getAttribute("aria-controls")).hidden = !on;
-        });
-        facts.forEach((p) => { p.hidden = p.dataset.for !== tab.id; });
-        sheet.style.background = tab.dataset.sheet;
-        if (focus) tab.focus({ preventScroll: true });
-        if (!quiet && !fine.matches && list.scrollWidth > list.clientWidth) {
-          tab.parentElement.scrollIntoView({ block: "nearest", inline: "start", behavior: "smooth" });
-        }
-      };
-
-      tabs.forEach((tab, index) => {
-        tab.addEventListener("click", () => select(tab));
-        tab.addEventListener("pointerenter", () => { if (fine.matches) select(tab); });
-        tab.addEventListener("keydown", (event) => {
-          const step = { ArrowDown: 1, ArrowRight: 1, ArrowUp: -1, ArrowLeft: -1 }[event.key];
-          if (!step) return;
-          event.preventDefault();
-          select(tabs[(index + step + tabs.length) % tabs.length], true);
-        });
-      });
-      select(tabs[0], false, true);
-    })();
-
-    /* Price: the selected name owns the figure */
-    (() => {
-      const names = [...document.querySelectorAll(".plan__name")];
-      names.forEach((name) => {
-        name.addEventListener("click", () => {
-          names.forEach((other) => {
-            const on = other === name;
-            other.setAttribute("aria-expanded", String(on));
-            document.getElementById(other.getAttribute("aria-controls")).hidden = !on;
-          });
-        });
-      });
-    })();
-
-    /* Entrances, once */
-    (() => {
-      const items = document.querySelectorAll("[data-reveal]");
-      if (!("IntersectionObserver" in window)) { items.forEach((el) => el.classList.add("is-in")); return; }
-      const io = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-          if (!entry.isIntersecting) return;
-          entry.target.classList.add("is-in");
-          io.unobserve(entry.target);
-        });
-      }, { rootMargin: "0px 0px -8% 0px" });
-      items.forEach((el) => io.observe(el));
-    })();
-
-    document.getElementById("year").textContent = new Date().getFullYear();
+    }
   </script>
 </body>
 </html>
