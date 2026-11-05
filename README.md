@@ -9,6 +9,8 @@ Static site served by GitHub Pages at https://podfolio.pcngroup.ch.
   for podcasters (section "Hai un podcast?")
 - `badge.svg`, `badge-en.svg`: the button podcasters embed on their sites
 - `privacy-policy.html`: privacy policy
+- `terms.html`, `en/terms.html`: terms and conditions in Italian and English
+  (the Italian version prevails); linked from both footers
 - `screens/`: raw app screenshots
 - `img/`: icons, link-preview image and captioned screenshots. The captioned
   ones are generated in the app repo by `tooling/compose_store_screenshots.py`
