@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="it">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PodFolio Privacy Policy</title>
-  <meta
-    name="description"
-    content="Privacy policy for the PodFolio website and app."
-  >
+  <title>Informativa sulla privacy di PodFolio</title>
+  <meta name="description" content="Informativa sulla privacy del sito e dell'app PodFolio.">
+  <link rel="canonical" href="https://podfolio.pcngroup.ch/privacy-policy.html">
+  <link rel="alternate" hreflang="it" href="https://podfolio.pcngroup.ch/privacy-policy.html">
+  <link rel="alternate" hreflang="en" href="https://podfolio.pcngroup.ch/en/privacy-policy.html">
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="shortcut icon" href="favicon.svg">
   <style>
@@ -125,80 +125,87 @@
         padding: 24px;
       }
     }
+    .top-links {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .lang {
+      color: var(--muted);
+      font-weight: 700;
+      text-decoration: none;
+    }
   </style>
 </head>
 <body>
   <main class="wrap">
     <section class="hero">
-      <a class="home-link" href="index.html">Back to PodFolio</a>
+      <div class="top-links">
+        <a class="home-link" href="./">Torna a PodFolio</a>
+        <a class="lang" href="en/privacy-policy.html" hreflang="en" lang="en">EN</a>
+      </div>
       <article class="policy-card">
-        <span class="meta">Last updated: November 2, 2026</span>
-        <h1>PodFolio Privacy Policy</h1>
+        <span class="meta">Ultimo aggiornamento: 5 novembre 2026</span>
+        <h1>Informativa sulla privacy di PodFolio</h1>
         <p class="lede">
-          This page describes how PodFolio and its publisher, PCN Group, may process personal data when you use the PodFolio website and app.
+          Questa pagina descrive come PodFolio e il suo editore, PCN Group, possono trattare i dati personali quando usi il sito e l'app PodFolio.
         </p>
 
-        <h2>What this policy covers</h2>
+        <h2>A cosa si applica questa informativa</h2>
         <p>
-          This policy applies to the public PodFolio website and the PodFolio mobile app, including features such as account sign-in, cloud sync, downloads, and subscriber-only podcast access flows.
+          Questa informativa si applica al sito pubblico di PodFolio e all'app PodFolio, comprese funzioni come l'accesso con un account, la sincronizzazione cloud, i download e l'accesso ai podcast riservati agli abbonati.
         </p>
 
-        <h2>Data we may process</h2>
+        <h2>Quali dati possiamo trattare</h2>
         <ul>
-          <li>Basic account identifiers used for sign-in or sync, such as your Google account identity.</li>
-          <li>App usage data needed to provide core features, such as subscriptions, listening progress, saved episodes, and download state.</li>
-          <li>Technical data such as device, browser, app version, and diagnostic information when required for security, stability, or support.</li>
-          <li>Information you provide when using subscriber-only integrations, such as credentials or identifiers needed to validate access.</li>
+          <li>Identificativi di base dell'account usati per l'accesso o la sincronizzazione, come l'identità del tuo account Google.</li>
+          <li>Dati d'uso dell'app necessari per le funzioni principali, come iscrizioni, avanzamento di ascolto, episodi salvati e stato dei download.</li>
+          <li>Dati tecnici come dispositivo, browser, versione dell'app e informazioni diagnostiche, quando servono per sicurezza, stabilità o assistenza.</li>
+          <li>Informazioni che fornisci quando usi le integrazioni per abbonati, come le credenziali o gli identificativi necessari a verificare l'accesso.</li>
         </ul>
 
-        <h2>Why the data is used</h2>
+        <h2>Perché usiamo i dati</h2>
         <ul>
-          <li>To provide the app and website.</li>
-          <li>To sync your library and listening progress across devices.</li>
-          <li>To enable Premium access and app purchase validation.</li>
-          <li>To support subscriber-only podcast imports and access checks.</li>
-          <li>To maintain security, prevent abuse, and troubleshoot technical issues.</li>
+          <li>Per fornire l'app e il sito.</li>
+          <li>Per sincronizzare la tua libreria e l'avanzamento di ascolto tra i dispositivi.</li>
+          <li>Per attivare l'accesso Premium e verificare gli acquisti nell'app.</li>
+          <li>Per gestire l'aggiunta dei podcast riservati agli abbonati e la verifica dell'accesso.</li>
+          <li>Per mantenere il servizio sicuro, prevenire abusi e risolvere problemi tecnici.</li>
         </ul>
 
-        <h2>Data sharing</h2>
+        <h2>Condivisione dei dati</h2>
         <p>
-          PodFolio may rely on third-party service providers that support hosting, authentication, sync, payments, analytics, or subscriber verification. Data is shared only when needed to operate those services.
+          PodFolio può affidarsi a fornitori terzi per hosting, autenticazione, sincronizzazione, pagamenti, statistiche o verifica degli abbonamenti. I dati vengono condivisi solo quando serve a far funzionare questi servizi.
         </p>
         <p>
-          In the web version of PodFolio, browsers cannot contact Il Post directly, so Il Post requests, including your login credentials and session cookies, are relayed through a proxy operated by PCN Group on Cloudflare Workers. The proxy forwards them to Il Post and does not store or log your credentials or session.
+          Nella versione web di PodFolio il browser non può contattare direttamente Il Post, quindi le richieste a Il Post, comprese le tue credenziali di accesso e i cookie di sessione, passano da un proxy gestito da PCN Group su Cloudflare Workers. Il proxy le inoltra a Il Post e non salva né registra le tue credenziali o la tua sessione.
         </p>
         <p>
-          The podcast search on this website runs in your browser and sends the words you type to Apple's public podcast directory (iTunes Search) to find shows. PodFolio does not store these searches. A Spotify link you paste is not sent anywhere until you open it in the web app.
-        </p>
-
-        <h2>Retention</h2>
-        <p>
-          Personal data is retained only for as long as reasonably necessary to provide the service, comply with legal obligations, resolve disputes, and enforce agreements.
+          La ricerca di podcast in PodFolio invia le parole che digiti all'elenco pubblico di podcast di Apple (iTunes Search) per trovare i programmi. PodFolio non salva queste ricerche. Un link di Spotify che incolli non viene inviato da nessuna parte finché non lo apri.
         </p>
 
-        <h2>Your choices</h2>
+        <h2>Conservazione</h2>
+        <p>
+          I dati personali vengono conservati solo per il tempo ragionevolmente necessario a fornire il servizio, rispettare gli obblighi di legge, risolvere controversie e far valere gli accordi.
+        </p>
+
+        <h2>Le tue scelte</h2>
         <ul>
-          <li>You can choose whether to create an account or use features that require sign-in.</li>
-          <li>You can stop using the website or app at any time.</li>
-          <li>You can contact the publisher to request information about your data, subject to applicable law.</li>
+          <li>Puoi scegliere se creare un account o usare le funzioni che richiedono l'accesso.</li>
+          <li>Puoi smettere di usare il sito o l'app in qualsiasi momento.</li>
+          <li>Puoi contattare l'editore per chiedere informazioni sui tuoi dati, nei limiti previsti dalla legge applicabile.</li>
         </ul>
 
-        <h2>Contact</h2>
+        <h2>Contatti</h2>
         <p>
-          For privacy-related questions, contact the publisher through <a href="https://www.pcngroup.ch" target="_blank" rel="noreferrer">pcngroup.ch</a>.
+          Per domande sulla privacy scrivi a <a href="mailto:info@pcngroup.ch">info@pcngroup.ch</a> oppure contatta l'editore tramite <a href="https://www.pcngroup.ch" target="_blank" rel="noreferrer">pcngroup.ch</a>.
         </p>
 
-        <div class="divider"></div>
-
-        <h2>Informativa in italiano</h2>
+        <h2>Lingua</h2>
         <p>
-          Questa pagina descrive in modo sintetico come PodFolio e il suo editore, PCN Group, possono trattare i dati personali quando utilizzi il sito web e l'app PodFolio.
-        </p>
-        <p>
-          I dati trattati possono includere identificativi di accesso, dati necessari per sincronizzazione, libreria, avanzamento di ascolto, download, verifica acquisti Premium e accesso a contenuti riservati agli abbonati. I dati vengono usati solo per fornire il servizio, mantenerlo sicuro e risolvere eventuali problemi tecnici.
-        </p>
-        <p>
-          PodFolio puo affidarsi a fornitori terzi per hosting, autenticazione, sincronizzazione, pagamenti o verifica accessi. Nella versione web, le richieste a Il Post (comprese le credenziali di accesso e i cookie di sessione) passano da un proxy gestito da PCN Group su Cloudflare Workers, che le inoltra a Il Post senza salvare né registrare credenziali o sessione. La ricerca di podcast su questo sito avviene nel tuo browser e invia le parole che digiti all'elenco pubblico di podcast di Apple (iTunes Search); PodFolio non salva queste ricerche. Per richieste sulla privacy puoi contattare PCN Group tramite <a href="https://www.pcngroup.ch" target="_blank" rel="noreferrer">pcngroup.ch</a>.
+          Questa informativa è disponibile in italiano e in inglese. In caso di differenze prevale la versione italiana.
         </p>
       </article>
     </section>

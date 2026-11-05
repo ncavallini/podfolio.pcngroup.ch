@@ -8,7 +8,8 @@ Static site served by GitHub Pages at https://podfolio.pcngroup.ch.
 - `index.html`: the Italian page, including the "Ascolta su PodFolio" link generator
   for podcasters (section "Hai un podcast?")
 - `badge.svg`, `badge-en.svg`: the button podcasters embed on their sites
-- `privacy-policy.html`: privacy policy
+- `privacy-policy.html`, `en/privacy-policy.html`: privacy policy in Italian
+  and English (the Italian version prevails)
 - `terms.html`, `en/terms.html`: terms and conditions in Italian and English
   (the Italian version prevails); linked from both footers
 - `screens/`: raw app screenshots
